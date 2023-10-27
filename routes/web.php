@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('WelcomeAdminView');
 }) -> name('home');
+//--------------------------------------
+//Route::get('', function () {
 
+//--------------------------------------
 /*
 Rutas menu var
 */

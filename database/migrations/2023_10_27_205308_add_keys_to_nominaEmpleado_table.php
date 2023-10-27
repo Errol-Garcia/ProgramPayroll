@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sesions', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('usuario');
-            $table->string('password');
-            $table->string('cedula');
-            //$table->integer('rol_id');
-            $table->timestamps();
+        Schema::table('nominaEmpleados', function (Blueprint $table) {
+            $table->foreignId('empleado_id')->constrained('empleados');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sesions');
+        Schema::table('nominaEmpleados', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('empleado_id');
+        });
     }
 };

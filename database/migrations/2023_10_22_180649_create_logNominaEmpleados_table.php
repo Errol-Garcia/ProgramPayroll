@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nomina_empleados', function (Blueprint $table) {
+        Schema::create('logNominaEmpleados', function (Blueprint $table) {
             $table->id();
-            $table->integer('empleado_id');
-            $table->float('sueldoNeto');
+            //$table->integer('empleado_id');
+            //$table->integer('logNomina_id');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nomina_empleados');
+        Schema::dropIfExists('logNominaEmpleados');
     }
 };

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->string('email');
-            $table->integer('departamento_id');
-            $table->integer('cargo_id');
+            //$table->integer('departamento_id');
+            //$table->integer('cargo_id');
             $table->timestamps();
         });
     }

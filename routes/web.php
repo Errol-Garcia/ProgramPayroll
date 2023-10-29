@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\DescuentoController;
+use App\Http\Controllers\DevengadoController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NominaEmpleadoController;
+use App\Models\Descuento;
+use App\Models\Empleado;
+use App\Models\NominaEmpleado;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +28,21 @@ Route::get('/', function () {
 //--------------------------------------
 //Route::get('', function () {
 
+//ROUTES FINALES
+Route::get('/',[IndexController::class, 'index'])->name('index');
+
+Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
+Route::get('/discount',[DescuentoController::class,'index'])->name('discount');
+Route::get('/department',[DepartamentoController::class,'index'])->name('department');
+Route::get('/employee',[EmpleadoController::class,'index'])->name('employee');
+Route::get('/payrollPartial',[NominaEmpleadoController::class,'create'])->name('payrollPartial');
+Route::get('/payroll',[NominaEmpleadoController::class,'index'])->name('payroll');
+
 //--------------------------------------
 /*
 Rutas menu var
 */
-
+/*
 //Routes Devengado
 Route::get('/accruedList', function () {
     return view('configuration.accrued.ConfigurationAccrued');
@@ -86,3 +105,4 @@ Route::get('/employeePayrollUpdating', function () {
 Route::get('/employeeUpdate', function () {
     return view('configuration.employee.EmployeeUpdating');
 }) -> name('employeeUpdating');
+*/

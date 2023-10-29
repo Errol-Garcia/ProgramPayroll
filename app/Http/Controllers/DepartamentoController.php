@@ -12,17 +12,44 @@ class DepartamentoController extends Controller
         return view('configuration.department.DepartmentList',['departamento'=> $departamento]);
     }
     public function create(){
+        $departamento = Departamento::get();
+        return view('configuration.department.DepartmentCreate',['departamento'=> $departamento]);
     }
     public function store(Request $request){
-        
+
+        $request->validate([
+            'name' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
+        ]);
+
+        Departamento::create([
+            'name'=> $request->name
+        ]);
+
+        return redirect()->route('departamento.index');
     }
+
     public function show(){
     }
-    public function edit($id){
+    public function edit(Departamento $departamento){
+        $departamento = Departamento::find($departamento->id);
+        return view('configuration.discount.ConfigurationDiscountUpdating',['departamento'=> $departamento]);
     }
-    public function update(Request $request){
-    }
-    public function destroy($id){
+    public function update(Request $request, Departamento $departamento){
+        $request->validate([
+            'name' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
+        ]);
+
+        $departamento->update([
+            'name'=> $request->name
+        ]);
         
+        return redirect()->route('departamento.index');
+    }
+    public function destroy(Departamento $departamento){
+        
+        $departamento = Departamento::find($departamento->id);
+        $departamento->delete();
+        return redirect()->route('departamento.index');
+
     }
 }

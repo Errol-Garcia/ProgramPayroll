@@ -9,11 +9,14 @@ class DevengadoController extends Controller
 {
     public function index(){
         $devengado = Devengado::get();
-        return view('configuration.accrued.ConfigurationAccrued',['devengado'=> $devengado]);
+        //dd($devengado);
+        return view('configuration.accrued.ConfigurationAccrued',
+            ['devengado'=> $devengado]);
     }
     public function create(){
         $devengado = Devengado::get();
-        return view('configuration.accrued.ConfigurationAccruedCreate',['devengado'=> null]);
+        return view('configuration.accrued.ConfigurationAccruedCreate',
+            ['devengado'=> null]);
     }
     public function store(Request $request){
         
@@ -38,7 +41,8 @@ class DevengadoController extends Controller
     }
     public function edit(Devengado $devengado){
         $devengado = Devengado::find($devengado->id);
-        return view('configuration.accrued.ConfigurationAccruedUpdating',['devengado'=> $devengado]);
+        return view('configuration.accrued.ConfigurationAccruedUpdating',
+            ['devengado'=> $devengado]);
     }
     public function update(Request $request, Devengado $devengado){
 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row center py-2">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="my-4">
                     <?php
             if(isset($_GET['mensaje']) and $_GET['mensaje']=='Creado'){
@@ -49,8 +49,10 @@
                 </div>
                 <div class="card" style="width: 50rem; margin-left: 200px">
                     <div style="display: flex; justify-content: Right;">
-                        <a href="././create.php" class="btn btn-primary" role="button" data-bs-toggle="button">añadir <i
-                                class="bi bi-plus-circle"></i></a>
+                        <a href="{{ route('discount.create') }}" class="btn btn-primary" role="button"
+                            data-bs-toggle="button">añadir
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
                     </div>
                     <div class="card-header">
                         Descuento
@@ -69,14 +71,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                /*$s = $db->prepare('SELECT * from public.descuento');
-                                $s->execute();
-                                $descuento = $s->fetchAll();
-                                foreach ($descuento as $descu) {
-                                    echo '<tr><td>' . $descu['arl'] . '</td>' . '<td>' . $descu['salud'] . '</td>' . '<td>' . $descu['pension'] . '</td>' . '<td>' . $descu['parafiscal'] . '</td>' . '<td>' . $descu['fecha'] . '<td>' . "<a class='text-success' href='./update.php?descuentoId=" . $descu['id'] . "'><i class='bi bi-pencil-square'></i>" . "<a class='text-danger' href='../../services/descuento/delete.php?descuentoId=" . $descu['id'] . "'><i class='bi bi-trash'></i>" . '</a></td></tr>';
-                                }*/
-                                ?>
+                                @isset($descuento)
+                                    @foreach ($descuento as $descu)
+                                        <tr>
+                                            <td>{{ $descu->arl }}</td>
+                                            <td>{{ $descu->salud }}</td>
+                                            <td>{{ $descu->pension }}</td>
+                                            <td>{{ $descu->parafiscal }}</td>
+                                            <td>{{ $descu->fechaRegistro }}
+                                            <td>
+                                                <a class='text-success' href="{{ route('discount.edit', $descu) }}">
+                                                    <i class='bi bi-pencil-square'></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endisset
                             </tbody>
                         </table>
 

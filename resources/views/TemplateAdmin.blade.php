@@ -45,8 +45,8 @@
                             Configuracion
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('accruedList') }}">Devengado</a></li>
-                            <li><a class="dropdown-item" href="{{ route('discountList') }}">Descuento</a></li>
+                            <li><a class="dropdown-item" href="{{ route('accrued') }}">Devengado</a></li>
+                            <li><a class="dropdown-item" href="{{ route('discount') }}">Descuento</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -55,7 +55,7 @@
                             Departamento
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('departmentList') }}">Listado</a></li>
+                            <li><a class="dropdown-item" href="{{ route('department') }}">Listado</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -64,9 +64,9 @@
                             Empleado
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('employeeList') }}">Listado</a></li>
+                            <li><a class="dropdown-item" href="{{ route('employee') }}">Listado</a></li>
                             <li><a class="dropdown-item" href="{{ route('payrollPartial') }}">Nomina parcial</a></li>
-                            <li><a class="dropdown-item" href="{{ route('employeePayroll') }}">Nomina</a></li>
+                            <li><a class="dropdown-item" href="{{ route('payroll') }}">Nomina</a></li>
                         </ul>
                     </li>
                 </ul>

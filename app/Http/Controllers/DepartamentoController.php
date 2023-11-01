@@ -9,11 +9,13 @@ class DepartamentoController extends Controller
 {
     public function index(){
         $departamento = Departamento::get();
-        return view('configuration.department.DepartmentList',['departamento'=> $departamento]);
+        return view('configuration.department.DepartmentList',
+            ['departamento'=> $departamento]);
     }
     public function create(){
         $departamento = Departamento::get();
-        return view('configuration.department.DepartmentCreate',['departamento'=> $departamento]);
+        return view('configuration.department.DepartmentCreate',
+        ['departamento'=> null]);
     }
     public function store(Request $request){
 
@@ -31,8 +33,10 @@ class DepartamentoController extends Controller
     public function show(){
     }
     public function edit(Departamento $departamento){
+        dd($departamento);
         $departamento = Departamento::find($departamento->id);
-        return view('configuration.discount.ConfigurationDiscountUpdating',['departamento'=> $departamento]);
+        return view('configuration.department.DepartmentUpdating',
+            ['departamento'=> $departamento]);
     }
     public function update(Request $request, Departamento $departamento){
         $request->validate([

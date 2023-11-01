@@ -9,11 +9,14 @@ class DescuentoController extends Controller
 {
     public function index(){
         $descuento = Descuento::get();
-        return view('configuration.discount.ConfigurationDiscount',['departamento'=> $descuento]);
+        //dd($descuento);
+        return view('configuration.discount.ConfigurationDiscount',
+            ['descuento'=> $descuento]);
     }
     public function create(){
         $descuento = Descuento::get();
-        return view('configuration.discount.ConfigurationDiscountCreate',['descuento'=> $descuento]);
+        return view('configuration.discount.ConfigurationDiscountCreate',
+            ['descuento'=> null]);
     }
     public function store(Request $request){
         
@@ -38,7 +41,8 @@ class DescuentoController extends Controller
     }
     public function edit(Descuento $descuento){
         $descuento = Descuento::find($descuento->id);
-        return view('configuration.discount.ConfigurationDiscountUpdating',['descuento'=> $descuento]);
+        return view('configuration.discount.ConfigurationDiscountUpdating',
+            ['descuento'=> $descuento]);
     }
     public function update(Request $request, Descuento $descuento){
 

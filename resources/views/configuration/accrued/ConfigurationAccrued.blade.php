@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="row center py-2">
-            <div class="col-md-9">
+            <div class="col-md-11">
                 <div class="my-4">
                     <?php
             if(isset($_GET['mensaje']) and $_GET['mensaje']=='Eliminado'){
         ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Eliminado</strong> departamento con exito..
+                        <strong>Eliminado</strong> devengado con exito..
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php
@@ -38,6 +38,11 @@
         ?>
                 </div>
                 <div class="card" style="width: 60rem; margin-left: 200px">
+                    <div style="display: flex; justify-content: Right;">
+
+                        <a href="{{ route('accruedCreate') }}" class="btn btn-primary" role="button"
+                            data-bs-toggle="button">añadir <i class="bi bi-plus-circle"></i></a>
+                    </div>
                     <div class="card-header">
                         Devengado
                     </div>
@@ -54,14 +59,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- <?php
-                                /*$s = $db->prepare('SELECT id,alimentacion,vivienda,transporte,extra,fecha from public.devengado');
-                                $s->execute();
-                                $devengado = $s->fetchAll();
-                                foreach ($devengado as $deven) {
-                                    echo '<tr><td>' . $deven['alimentacion'] . '</td>' . '<td>' . $deven['vivienda'] . '</td>' . '<td>' . $deven['transporte'] . '</td>' . '<td>' . $deven['extra'] . '</td>' . '<td>' . $deven['fecha'] . '<td>' . "<a class='text-success' href='./update.php?devengadoId=" . $deven['id'] . "'><i class='bi bi-pencil-square'></i> </a></td></tr>";
-                                }*/
-                                ?> --}}
+                                @isset($devengado)
+                                    @foreach ($devengado as $deven)
+                                        <tr>
+                                            <td>{{ $deven->alimentacion }}</td>
+                                            <td>{{ $deven->vivienda }}</td>
+                                            <td>{{ $deven->transporte }}</td>
+                                            <td>{{ $deven->extra }}</td>
+                                            <td>{{ $deven->fechaRegistro }}
+                                            <td>
+                                                <a class='text-success' href="{{ route('accrued.edit', $deven) }}">
+                                                    <i class='bi bi-pencil-square'></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endisset
                             </tbody>
                         </table>
                     </div>

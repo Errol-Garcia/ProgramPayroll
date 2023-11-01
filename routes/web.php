@@ -6,9 +6,6 @@ use App\Http\Controllers\DevengadoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NominaEmpleadoController;
-use App\Models\Descuento;
-use App\Models\Empleado;
-use App\Models\NominaEmpleado;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +26,20 @@ Route::get('/', function () {
 //Route::get('', function () {
 
 //ROUTES FINALES
-Route::get('/',[IndexController::class, 'index'])->name('index');
+//Route::get('/',[IndexController::class, 'index'])->name('index');
+//----------------Resources---------------
+
+Route::resource('accrued',DevengadoController::class);
+Route::resource('discount',DescuentoController::class);
+Route::resource('department',DepartamentoController::class);
+Route::resource('employee',EmpleadoController::class);
 
 Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
+
+Route::get('/accruedCreate',[DevengadoController::class, 'create']) -> name('accruedCreate');
+//Route::get('/departmentCreate',[DepartamentoController::class, 'create']) -> name('departmentCreate');
+Route::get('/employeeCreate',[EmpleadoController::class, 'create']) -> name('employeeCreate');
+
 Route::get('/discount',[DescuentoController::class,'index'])->name('discount');
 Route::get('/department',[DepartamentoController::class,'index'])->name('department');
 Route::get('/employee',[EmpleadoController::class,'index'])->name('employee');

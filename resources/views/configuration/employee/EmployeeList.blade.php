@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row center py-2">
-            <div class="col-md-10">
+            <div class="col-md-12 justify-start">
                 <div class="my-2">
                     <?php
                 if(isset($_GET['mensaje']) and $_GET['mensaje']=='Eliminado'){
@@ -35,7 +35,7 @@
                 }
             ?>
                 </div>
-                <div class="card" style="width: 70rem; margin-left: 220px">
+                <div class="card justify-content-center">
                     <div style="display: flex; justify-content: Right;">
                         <a href="././create.php" class="btn btn-primary" role="button" data-bs-toggle="button">añadir <i
                                 class="bi bi-plus-circle"></i></a>
@@ -56,32 +56,38 @@
                                     <th scope="col">Departamento</th>
                                     <th scope="col">Direccion</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col" colspan="2">Opciones</th>
                                     <?php //echo $th;
                                     ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                /*
-                                $n=1;  
-                                $s->execute();
-                                $result = $s->fetchAll();
-                                foreach($result as $empleo){
-                                    echo "<tr><td scope='row'>".$n."</td>".
-                                    "<td>".$empleo[1]."</td>".
-                                    "<td>".$empleo[2]."</td>".
-                                    "<td>".$empleo[3]."</td>".
-                                    "<td>".$empleo[4]."</td>".
-                                    "<td>".$empleo[5]."</td>".
-                                    "<td>".$empleo[6]."</td>".
-                                    "<td>".$empleo[7]."</td>".
-                                    "<td>".$empleo[8]."</td>".
-                                    "<td><a class='text-success' style='margin-left: 13px' href='./update.php?empleadoId=".$empleo[0]."'><i class='bi bi-pencil-square'></i>".
-                                    "<a class='text-danger' href='../../services/empleado/delete.php?empleadoId=".$empleo[0]."'><i class='bi bi-trash'></i>" .                                    
-                                    "</a></td>".opciones($empleo[0],$rol);
+                                @isset($empleado)
+                                    <?php $cont = 1; ?>
+                                    @foreach ($empleado as $emple)
+                                        <tr>
+                                            <td>{{ $cont }}</td>
+                                            <td>{{ $emple->cedula }}</td>
+                                            <td>{{ $emple->nombres }}</td>
+                                            <td>{{ $emple->apellidos }}</td>
+                                            <td>{{ $emple->telefono }}</td>
+                                            <td>{{ $emple->cargo_id }}</td>
+                                            <td>{{ $emple->departamento_id }}</td>
+                                            <td>{{ $emple->direccion }}</td>
+                                            <td>{{ $emple->email }}</td>
+                                            <td>
+                                                <a class='text-success' href="{{ route('employee.edit', $emple) }}">
+                                                    <i class='bi bi-pencil-square'></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php $cont++; ?>
+                                    @endforeach
+                                @endisset
+                                {{-- "".opciones($empleo[0],$rol);
                                     $n++;
                                 }*/
-                                ?>
+                                ?> --}}
                             </tbody>
                         </table>
                     </div>

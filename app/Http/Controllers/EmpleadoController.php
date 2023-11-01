@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
+use App\Models\Departamento;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 
@@ -9,14 +11,18 @@ class EmpleadoController extends Controller
 {
     public function index(){
         $empleado = Empleado::get();
-        return view('configuration.employee.EmployeeList',['empleado'=> $empleado]);
+        $cargo = Cargo::get();
+        $departamento = Departamento::get();
+        return view('configuration.employee.EmployeeList',['empleado'=> $empleado, 'cargo'=>$cargo, 'departamento'=>$departamento]);
     }
     
     public function create(){
         $empleado = Empleado::get();
-        return view('configuration.employee.EmployeeCreate',['empleado'=> $empleado]);
+        $cargo = Cargo::get();
+        $departamento = Departamento::get();
+        return view('configuration.employee.EmployeeCreate',['empleado'=> $empleado, 'cargo'=>$cargo, 'departamento'=>$departamento]);
     }
-    public function store(Request $request){
+    public function store(Request $request, Empleado $empleado, Cargo $cargo, Departamento $departamento){
         
         $request->validate([
             'cedula' => 'required|regex:/^([0-9]*)$/',
@@ -36,6 +42,8 @@ class EmpleadoController extends Controller
             'telefono'=> $request->telefono,
             'direccion'=> $request->direccion,
             'email'=> $request->email,
+            'departamento_id'=> $request->departamento_id,
+            'cargo_id'=> $request->cargo_id,
         ]);
         return redirect()->route('empleado.index');
     }
@@ -43,7 +51,10 @@ class EmpleadoController extends Controller
     }
     public function edit(Empleado $empleado){
         $empleado = Empleado::find($empleado->id);
-        return view('configuration.employee.EmployeeCreate',['empleado'=> $empleado]);
+        $cargo = Cargo::get();
+        $departamento = Departamento::get();
+        return view('configuration.employee.EmployeeUpdating',
+        ['empleado'=> $empleado, 'cargo'=>$cargo, 'departamento'=>$departamento]);
     }
     public function update(Request $request, Empleado $empleado){
 
@@ -64,7 +75,9 @@ class EmpleadoController extends Controller
             'sueldo'=> $request->sueldo,
             'telefono'=> $request->telefono,
             'direccion'=> $request->direccion,
-            'email'=> $request->email
+            'email'=> $request->email,
+            'departamento_id'=> $request->departamento_id,
+            'cargo_id'=> $request->cargo_id,
         ]);
 
         return redirect()->route('empleado.index');

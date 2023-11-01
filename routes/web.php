@@ -33,6 +33,7 @@ Route::resource('accrued',DevengadoController::class);
 Route::resource('discount',DescuentoController::class);
 Route::resource('department',DepartamentoController::class);
 Route::resource('employee',EmpleadoController::class);
+Route::resource('payroll',NominaEmpleadoController::class);
 
 Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\NominaEmpleado;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,10 @@ class NominaEmpleadoController extends Controller
         $nominaEmpleado = NominaEmpleado::get();
         return view('');
     }
-    public function create(){
+    public function create(Empleado $empleado){
+        $empleado = Empleado::where('cedula',$empleado->cedula);
+        $nominaEmpleado = NominaEmpleado::find($empleado->nomina);
+        return view('configuration.employee.EmployeePayrollPartial', ['empleado' =>$empleado, 'nominaEmpleado'=> $nominaEmpleado]);
     }
     public function store(Request $request){
         

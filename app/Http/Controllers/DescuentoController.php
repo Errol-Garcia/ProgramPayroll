@@ -16,15 +16,15 @@ class DescuentoController extends Controller
     public function create(){
         $descuento = Descuento::get();
         return view('configuration.discount.ConfigurationDiscountCreate',
-            ['descuento'=> null]);
+            ['discount'=> null]);
     }
     public function store(Request $request){
         
         $request->validate([
-            'arl' => 'required|float',
-            'salud' => 'required|float',
-            'pension' => 'required|float',
-            'parafiscal' => 'required|float',
+            'arl' => 'required|decimal:0,5',
+            'salud' => 'required|decimal:0,5',
+            'pension' => 'required|decimal:0,5',
+            'parafiscal' => 'required|decimal:0,5',
             'fechaRegistro' => 'required|date'
         ]);
 
@@ -35,26 +35,26 @@ class DescuentoController extends Controller
             'parafiscal' => $request->parafiscal,
             'fechaRegistro' => $request->fechaRegistro,
         ]);
-        return redirect()->route('descuento.index');
+        return redirect()->route('discount.index');
     }
     public function show(){
     }
-    public function edit(Descuento $descuento){
-        $descuento = Descuento::find($descuento->id);
+    public function edit(Descuento $discount){
+        $discount = Descuento::find($discount->id);
         return view('configuration.discount.ConfigurationDiscountUpdating',
-            ['descuento'=> $descuento]);
+            ['discount'=> $discount]);
     }
-    public function update(Request $request, Descuento $descuento){
+    public function update(Request $request, Descuento $discount){
 
         $request->validate([
-            'arl' => 'required|float',
-            'salud' => 'required|float',
-            'pension' => 'required|float',
-            'parafiscal' => 'required|float',
+            'arl' => 'required|decimal:0,5',
+            'salud' => 'required|decimal:0,5',
+            'pension' => 'required|decimal:0,5',
+            'parafiscal' => 'required|decimal:0,5',
             'fechaRegistro' => 'required|date'
         ]);
 
-        $descuento->update([
+        $discount->update([
             'arl' => $request->arl,
             'salud' => $request->salud,
             'pension' => $request->pension,
@@ -62,13 +62,14 @@ class DescuentoController extends Controller
             'fechaRegistro' => $request->fechaRegistro,
         ]);
 
-        return redirect()->route('descuento.index');
+        return redirect()->route('discount.index');
     }
-    public function destroy(Descuento $descuento){
+    
+    public function destroy(Descuento $discount){
         
-        $descuento = Descuento::find($descuento->id);
-        $descuento->delete();
-        return redirect()->route('descuento.index');
+        $discount = Descuento::find($discount->id);
+        $discount->delete();
+        return redirect()->route('discount.index');
 
     }
 }

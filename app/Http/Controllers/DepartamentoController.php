@@ -8,52 +8,52 @@ use Illuminate\Http\Request;
 class DepartamentoController extends Controller
 {
     public function index(){
-        $departamento = Departamento::get();
+        $department = Departamento::get();
         return view('configuration.department.DepartmentList',
-            ['departamento'=> $departamento]);
+            ['department'=> $department]);
     }
     public function create(){
-        $departamento = Departamento::get();
+        $department = Departamento::get();
         return view('configuration.department.DepartmentCreate',
-        ['departamento'=> null]);
+        ['department'=> null]);
     }
     public function store(Request $request){
 
         $request->validate([
-            'name' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
+            'nombre' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
         ]);
 
         Departamento::create([
-            'name'=> $request->name
+            'nombre'=> $request->nombre
         ]);
 
-        return redirect()->route('departamento.index');
+        return redirect()->route('department.index');
     }
 
     public function show(){
     }
-    public function edit(Departamento $departamento){
-        dd($departamento);
-        $departamento = Departamento::find($departamento->id);
+    public function edit(Departamento $department){
+        
+        $department = Departamento::find($department->id);
         return view('configuration.department.DepartmentUpdating',
-            ['departamento'=> $departamento]);
+            ['department'=> $department]);
     }
-    public function update(Request $request, Departamento $departamento){
+    public function update(Request $request, Departamento $department){
         $request->validate([
-            'name' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
+            'nombre' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
         ]);
 
-        $departamento->update([
-            'name'=> $request->name
+        $department->update([
+            'nombre'=> $request->nombre
         ]);
         
-        return redirect()->route('departamento.index');
+        return redirect()->route('department.index');
     }
-    public function destroy(Departamento $departamento){
+    public function destroy(Departamento $department){
         
-        $departamento = Departamento::find($departamento->id);
-        $departamento->delete();
-        return redirect()->route('departamento.index');
+        $department = Departamento::find($department->id);
+        $department->delete();
+        return redirect()->route('department.index');
 
     }
 }

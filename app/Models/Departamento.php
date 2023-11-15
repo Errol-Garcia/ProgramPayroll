@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Departamento extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nombre'
+    ];
     public function empleado() : BelongsTo{
         return $this->belongsTo(Empleado::class);
     }

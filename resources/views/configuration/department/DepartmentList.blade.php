@@ -40,9 +40,8 @@
                 <div class="card" style="width: 50rem;">
                     <div style="display: flex; justify-content: Right;">
 
-                        <a href="{{ route('department.create') }}" class="btn btn-primary" role="button"
-                            data-bs-toggle="button">añadir
-                            <i class="bi bi-plus-circle"></i></a>
+                        <a href="{{ route('department.create') }}" class="btn btn-primary">añadir
+                        </a>
                     </div>
                     <div class="card">
                         <div class="card-header">
@@ -52,22 +51,24 @@
                             <table class="table align-middle">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col" colspan="2">Opciones</th>
+                                        <th style="text-align: center" scope="col">#</th>
+                                        <th style="text-align: center" scope="col">Nombre</th>
+                                        <th style="text-align: center" scope="col" colspan="2">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @isset($departamento)
+                                    @isset($department)
                                         <?php $cont = 1; ?>
-                                        @foreach ($departamento as $depart)
+                                        @foreach ($department as $depart)
                                             <tr>
-                                                <td>{{ $cont }}</td>
-                                                <td>{{ $depart->nombre }}</td>
-                                                <td>
+                                                <td style="text-align: center">{{ $cont }}</td>
+                                                <td style="text-align: center">{{ $depart->nombre }}</td>
+                                                <td style="text-align: center">
                                                     <a class='text-success' href="{{ route('department.edit', $depart) }}">
                                                         <i class='bi bi-pencil-square'></i>
                                                     </a>
+                                                    <a class='text-danger' href="{{ route('department.destroy', $depart) }}"><i
+                                                            class='bi bi-trash'></i>
                                                 </td>
                                             </tr>
                                             <?php $cont++; ?>

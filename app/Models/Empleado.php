@@ -11,6 +11,18 @@ class Empleado extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'cedula',
+        'nombres',
+        'apellidos',
+        'sueldo',
+        'telefono',
+        'direccion',
+        'email',
+        'departamento_id',
+        'cargo_id',
+    ];
+    
     public function logNominaEmpleado() : BelongsTo{
         return $this->belongsTo(LogNominaEmpleado::class);
     }

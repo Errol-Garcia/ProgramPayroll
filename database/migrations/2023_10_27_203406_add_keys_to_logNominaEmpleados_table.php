@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('logNominaEmpleados', function (Blueprint $table) {
             $table->dropConstrainedForeignId('empleado_id');
-            $table->dropConstrainedForeignId('logNominas');
+            $table->dropConstrainedForeignId('logNomina_id');
         });
     }
 };

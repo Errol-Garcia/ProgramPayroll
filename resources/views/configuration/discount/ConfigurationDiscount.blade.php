@@ -49,9 +49,8 @@
                 </div>
                 <div class="card" style="width: 50rem; margin-left: 200px">
                     <div style="display: flex; justify-content: Right;">
-                        <a href="{{ route('discount.create') }}" class="btn btn-primary" role="button"
-                            data-bs-toggle="button">añadir
-                            <i class="bi bi-plus-circle"></i>
+                        <a href="{{ route('discount.create') }}" class="btn btn-primary">añadir
+
                         </a>
                     </div>
                     <div class="card-header">
@@ -62,27 +61,29 @@
                         <table class="table align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">Arl %</th>
-                                    <th scope="col">Salud %</th>
-                                    <th scope="col">Pension %</th>
-                                    <th scope="col">Parafiscales %</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col" colspan="2">Opciones</th>
+                                    <th style="text-align: center" scope="col">Arl %</th>
+                                    <th style="text-align: center" scope="col">Salud %</th>
+                                    <th style="text-align: center" scope="col">Pension %</th>
+                                    <th style="text-align: center" scope="col">Parafiscales %</th>
+                                    <th style="text-align: center" scope="col">Fecha</th>
+                                    <th style="text-align: center" scope="col" colspan="2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @isset($descuento)
                                     @foreach ($descuento as $descu)
                                         <tr>
-                                            <td>{{ $descu->arl }}</td>
-                                            <td>{{ $descu->salud }}</td>
-                                            <td>{{ $descu->pension }}</td>
-                                            <td>{{ $descu->parafiscal }}</td>
-                                            <td>{{ $descu->fechaRegistro }}
-                                            <td>
+                                            <td style="text-align: center">{{ $descu->arl }}</td>
+                                            <td style="text-align: center">{{ $descu->salud }}</td>
+                                            <td style="text-align: center">{{ $descu->pension }}</td>
+                                            <td style="text-align: center">{{ $descu->parafiscal }}</td>
+                                            <td style="text-align: center">{{ $descu->fechaRegistro }}
+                                            <td style="text-align: center">
                                                 <a class='text-success' href="{{ route('discount.edit', $descu) }}">
                                                     <i class='bi bi-pencil-square'></i>
                                                 </a>
+                                                <a class='text-danger' href="{{ route('discount.destroy', $descu) }}"><i
+                                                        class='bi bi-trash'></i>
                                             </td>
                                         </tr>
                                     @endforeach

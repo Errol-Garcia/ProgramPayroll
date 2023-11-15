@@ -1,8 +1,10 @@
 @csrf
 <div class="mb-3">
     <label for="departamento" class="form-label">Departamtento</label>
-    <input type="text" class="form-control" id="departamento" name="departamento"
-        value="{{ old('nombre', $departamento) }}" aria-describedby="emailHelp" required>
+    <input type="text" class="form-control" id="departamento" name="nombre" value="{{ old('nombre', $department) }}"
+        aria-describedby="emailHelp" required>
+    @error('nombre')
+        <div class="text-small text-danger">{{ $message }}</div>
+    @enderror
 
-    <input type="hidden" name="id" value="{{ old('id', $departamento) }}">
 </div>

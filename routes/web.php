@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticationSessionController;
+use App\Http\Controllers\Auth\RegisterdUserSessionController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DescuentoController;
 use App\Http\Controllers\DevengadoController;
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('WelcomeAdminView');
-}) -> name('home');
+}) -> name('home')->middleware('auth');
 //--------------------------------------
 //Route::get('', function () {
 
@@ -29,89 +31,28 @@ Route::get('/', function () {
 //Route::get('/',[IndexController::class, 'index'])->name('index');
 //----------------Resources---------------
 
-Route::resource('accrued',DevengadoController::class);
-Route::resource('discount',DescuentoController::class);
-Route::resource('department',DepartamentoController::class);
-Route::resource('employee',EmpleadoController::class);
-Route::resource('payroll',NominaEmpleadoController::class);
+Route::resource('accrued',DevengadoController::class)->middleware('auth');
+Route::resource('discount',DescuentoController::class)->middleware('auth');
+Route::resource('department',DepartamentoController::class)->middleware('auth');
+Route::resource('employee',EmpleadoController::class)->middleware('auth');
+Route::resource('payroll',NominaEmpleadoController::class)->middleware('auth');
 
-Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
+//Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
 
-Route::get('/accruedCreate',[DevengadoController::class, 'create']) -> name('accruedCreate');
+//Route::get('/accruedCreate',[DevengadoController::class, 'create']) -> name('accruedCreate');
 //Route::get('/departmentCreate',[DepartamentoController::class, 'create']) -> name('departmentCreate');
-Route::get('/employeeCreate',[EmpleadoController::class, 'create']) -> name('employeeCreate');
+//Route::get('/employeeCreate',[EmpleadoController::class, 'create']) -> name('employeeCreate');
 
-Route::get('/discount',[DescuentoController::class,'index'])->name('discount');
-Route::get('/department',[DepartamentoController::class,'index'])->name('department');
-Route::get('/employee',[EmpleadoController::class,'index'])->name('employee');
-Route::get('/payrollPartial',[NominaEmpleadoController::class,'create'])->name('payrollPartial');
-Route::get('/payroll',[NominaEmpleadoController::class,'index'])->name('payroll');
+//Route::get('/discount',[DescuentoController::class,'index'])->name('discount');
+//Route::get('/department',[DepartamentoController::class,'index'])->name('department');
+//Route::get('/employee',[EmpleadoController::class,'index'])->name('employee');
+//Route::get('/payrollPartial',[NominaEmpleadoController::class])->name('payrollPartial');
+//Route::get('/payroll',[NominaEmpleadoController::class,'index'])->name('payroll');
+//===============sesión
 
-//--------------------------------------
-/*
-Rutas menu var
-*/
-/*
-//Routes Devengado
-Route::get('/accruedList', function () {
-    return view('configuration.accrued.ConfigurationAccrued');
-}) -> name('accruedList');
+Route::get('/login', [AuthenticationSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticationSessionController::class, 'store'])->name('start');
+Route::post('/logout', [AuthenticationSessionController::class, 'destroy'])->name('logout');
 
-Route::get('/accruedCreate', function () {
-    return view('configuration.accrued.ConfigurationCreate');
-}) -> name('accruedCreate');
-
-Route::get('/accruedUpdate', function () {
-    return view('configuration.accrued.ConfigurationAccruedUpdating');
-}) -> name('accruedUpdate');
-
-
-
-//Routes Descuento
-Route::get('/discountList', function () {
-    return view('configuration.discount.ConfigurationDiscount');
-}) -> name('discountList');
-
-//Routes departamentos
-Route::get('/departmentList', function () {
-    return view('configuration.department.DepartmentList');
-}) -> name('departmentList');
-
-Route::get('/departmentCreate', function () {
-    return view('configuration.department.DepartmentCreate');
-}) -> name('departmentCreate');
-
-Route::get('/departmentUpdate', function () {
-    return view('configuration.department.DepartmentUpdating');
-}) -> name('departmentUpdate');
-
-
-//Routes Empleado TODO
-Route::get('/employeeList', function () {
-    return view('configuration.employee.EmployeeList');
-}) -> name('employeeList');
-
-
-Route::get('/payrollPartial', function () {
-    return view('configuration.employee.EmployeePayrollPartial');
-}) -> name('payrollPartial');
-
-Route::get('/employeePayroll', function () {
-    return view('configuration.employee.EmployeePayroll');
-}) -> name('employeePayroll');
-
-//------------------//--------------------------------//------------
-
-Route::get('/employeeCreate', function () {
-    return view('configuration.employee.EmployeeCreate');
-}) -> name('employeeCreate');
-
-
-Route::get('/employeePayrollUpdating', function () {
-    return view('configuration.employee.EmployeePayrollUpdating');
-}) -> name('employeePayrollUpdating');
-
-Route::get('/employeeUpdate', function () {
-    return view('configuration.employee.EmployeeUpdating');
-}) -> name('employeeUpdating');
-*/
+Route::get('/register', [RegisterdUserSessionController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('save');

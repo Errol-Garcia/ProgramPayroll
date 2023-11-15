@@ -40,8 +40,7 @@
                 <div class="card" style="width: 60rem; margin-left: 200px">
                     <div style="display: flex; justify-content: Right;">
 
-                        <a href="{{ route('accruedCreate') }}" class="btn btn-primary" role="button"
-                            data-bs-toggle="button">añadir <i class="bi bi-plus-circle"></i></a>
+                        <a href="{{ route('accrued.create') }}" class="btn btn-primary">añadir </a>
                     </div>
                     <div class="card-header">
                         Devengado
@@ -50,27 +49,29 @@
                         <table class="table align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">Alimentacion %</th>
-                                    <th scope="col">Aux Vivienda %</th>
-                                    <th scope="col">Aux Transporte %</th>
-                                    <th scope="col">Bonificacion %</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col" colspan="2">Opciones</th>
+                                    <th style="text-align: center" scope="col">Alimentacion %</th>
+                                    <th style="text-align: center" scope="col">Aux Vivienda %</th>
+                                    <th style="text-align: center" scope="col">Aux Transporte %</th>
+                                    <th style="text-align: center" scope="col">Bonificacion %</th>
+                                    <th style="text-align: center" scope="col">Fecha</th>
+                                    <th style="text-align: center" scope="col" colspan="2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @isset($devengado)
-                                    @foreach ($devengado as $deven)
+                                @isset($accrued)
+                                    @foreach ($accrued as $deven)
                                         <tr>
-                                            <td>{{ $deven->alimentacion }}</td>
-                                            <td>{{ $deven->vivienda }}</td>
-                                            <td>{{ $deven->transporte }}</td>
-                                            <td>{{ $deven->extra }}</td>
-                                            <td>{{ $deven->fechaRegistro }}
-                                            <td>
+                                            <td style="text-align: center">{{ $deven->alimentacion }}</td>
+                                            <td style="text-align: center">{{ $deven->vivienda }}</td>
+                                            <td style="text-align: center">{{ $deven->transporte }}</td>
+                                            <td style="text-align: center">{{ $deven->extra }}</td>
+                                            <td style="text-align: center">{{ $deven->fechaRegistro }}
+                                            <td style="text-align: center">
                                                 <a class='text-success' href="{{ route('accrued.edit', $deven) }}">
                                                     <i class='bi bi-pencil-square'></i>
                                                 </a>
+                                                <a class='text-danger' href="{{ route('accrued.destroy', $deven) }}"><i
+                                                        class='bi bi-trash'></i>
                                             </td>
                                         </tr>
                                     @endforeach

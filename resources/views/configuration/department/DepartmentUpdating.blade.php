@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row centrar py-5">
             <div class="col-5 " style="padding-bottom:500px;">
-                <form action="{{ route('department.update', $departamento) }}" method="POST">
+                <form action="{{ route('department.update', $department) }}" method="POST">
                     @method('PUT')
                     @include('configuration.department.DepartmentForm')
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </form>
-                <div class="my-4">
+                {{-- <div class="my-4">
                     <?php
                     //if(isset($_GET['mensaje']) and $_GET['mensaje']=='registrado'){
                     ?>
@@ -30,7 +30,7 @@
                     <?php
                     //}
                     ?>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

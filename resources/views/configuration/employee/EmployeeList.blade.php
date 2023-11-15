@@ -37,8 +37,8 @@
                 </div>
                 <div class="card justify-content-center">
                     <div style="display: flex; justify-content: Right;">
-                        <a href="././create.php" class="btn btn-primary" role="button" data-bs-toggle="button">añadir <i
-                                class="bi bi-plus-circle"></i></a>
+                        <a href="{{ route('employee.create') }}" class="btn btn-primary">añadir
+                        </a>
                     </div>
                     <div class="card-header">
                         lista de Empleados
@@ -47,16 +47,16 @@
                         <table class="table align-middle" style='justify-content: Right;'>
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Cedula</th>
-                                    <th scope="col">Nombres</th>
-                                    <th scope="col">Apellidos</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Cargo</th>
-                                    <th scope="col">Departamento</th>
-                                    <th scope="col">Direccion</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col" colspan="2">Opciones</th>
+                                    <th style="text-align: center" scope="col">#</th>
+                                    <th style="text-align: center" scope="col">Cedula</th>
+                                    <th style="text-align: center" scope="col">Nombres</th>
+                                    <th style="text-align: center" scope="col">Apellidos</th>
+                                    <th style="text-align: center" scope="col">Telefono</th>
+                                    <th style="text-align: center" scope="col">Cargo</th>
+                                    <th style="text-align: center" scope="col">Departamento</th>
+                                    <th style="text-align: center" scope="col">Direccion</th>
+                                    <th style="text-align: center" scope="col">Email</th>
+                                    <th style="text-align: center" scope="col" colspan="2">Opciones</th>
                                     <?php //echo $th;
                                     ?>
                                 </tr>
@@ -66,16 +66,16 @@
                                     <?php $cont = 1; ?>
                                     @foreach ($empleado as $emple)
                                         <tr>
-                                            <td>{{ $cont }}</td>
-                                            <td>{{ $emple->cedula }}</td>
-                                            <td>{{ $emple->nombres }}</td>
-                                            <td>{{ $emple->apellidos }}</td>
-                                            <td>{{ $emple->telefono }}</td>
-                                            <td>{{ $emple->cargo_id }}</td>
-                                            <td>{{ $emple->departamento_id }}</td>
-                                            <td>{{ $emple->direccion }}</td>
-                                            <td>{{ $emple->email }}</td>
-                                            <td>
+                                            <td style="text-align: center">{{ $cont }}</td>
+                                            <td style="text-align: center">{{ $emple->cedula }}</td>
+                                            <td style="text-align: center">{{ $emple->nombres }}</td>
+                                            <td style="text-align: center">{{ $emple->apellidos }}</td>
+                                            <td style="text-align: center">{{ $emple->telefono }}</td>
+                                            <td style="text-align: center">{{ $emple->cargo_id }}</td>
+                                            <td style="text-align: center">{{ $emple->departamento_id }}</td>
+                                            <td style="text-align: center">{{ $emple->direccion }}</td>
+                                            <td style="text-align: center">{{ $emple->email }}</td>
+                                            <td style="text-align: center">
                                                 <a class='text-success' href="{{ route('employee.edit', $emple) }}">
                                                     <i class='bi bi-pencil-square'></i>
                                                 </a>
@@ -84,10 +84,6 @@
                                         <?php $cont++; ?>
                                     @endforeach
                                 @endisset
-                                {{-- "".opciones($empleo[0],$rol);
-                                    $n++;
-                                }*/
-                                ?> --}}
                             </tbody>
                         </table>
                     </div>

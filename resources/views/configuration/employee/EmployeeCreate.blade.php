@@ -25,16 +25,14 @@
                     }
                 ?>
                 </div>
-                <div class="card" style="width: 40rem;">
+                <div class="card" style="width: 50rem;">
                     <div class="card-header">
                         Registro de Empleado
                     </div>
                     <div class="card-body ">
                         <form action="{{ route('employee.store') }}" method="POST">
                             @include('configuration.employee.EmployeeForm')
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-primary" type="submit"> Registrar </button>
-                            </div>
+                            <button type="submit" class="btn btn-primary">Crear</button>
                         </form>
                     </div>
                 </div>

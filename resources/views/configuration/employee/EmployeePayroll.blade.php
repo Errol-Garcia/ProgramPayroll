@@ -32,13 +32,13 @@
                         <table class="table align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Cedula</th>
-                                    <th scope="col">Nombres</th>
-                                    <th scope="col">Apellidos</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Sueldo Neto</th>
-                                    <th scope="col">Opcion</th>
+                                    <th style="text-align: center" scope="col">#</th>
+                                    <th style="text-align: center" scope="col">Cedula</th>
+                                    <th style="text-align: center" scope="col">Nombres</th>
+                                    <th style="text-align: center" scope="col">Apellidos</th>
+                                    <th style="text-align: center" scope="col">Telefono</th>
+                                    <th style="text-align: center" scope="col">Sueldo Neto</th>
+                                    <th style="text-align: center" scope="col">Opcion</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -5,12 +5,9 @@
             <div class="col-5 ">
                 <form action="{{ route('department.store') }}" method="POST">
                     @include('configuration.department.DepartmentForm')
-
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit"> Crear </button>
-                    </div>
+                    <button class="btn btn-primary" type="submit"> Crear </button>
                 </form>
-                <div class="my-4">
+                {{-- <div class="my-4">
                     <?php
                     if(isset($_GET['mensaje']) and $_GET['mensaje']=='registrado'){
                     ?>
@@ -32,7 +29,7 @@
                     <?php
                     }
                     ?>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

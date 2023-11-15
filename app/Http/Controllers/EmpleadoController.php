@@ -20,7 +20,7 @@ class EmpleadoController extends Controller
         $empleado = Empleado::get();
         $cargo = Cargo::get();
         $departamento = Departamento::get();
-        return view('configuration.employee.EmployeeCreate',['empleado'=> $empleado, 'cargo'=>$cargo, 'departamento'=>$departamento]);
+        return view('configuration.employee.EmployeeCreate',['employee'=> null, 'cargo'=>$cargo, 'departamento'=>$departamento]);
     }
     public function store(Request $request, Empleado $empleado, Cargo $cargo, Departamento $departamento){
         
@@ -28,12 +28,13 @@ class EmpleadoController extends Controller
             'cedula' => 'required|regex:/^([0-9]*)$/',
             'nombres' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'apellidos' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
-            'sueldo' => 'required|float',
+            'sueldo' => 'required|decimal:0,5',
             'telefono' => 'required|regex:/^([0-9]*)$/',
             'direccion' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'email' => 'required|string|email|max:255|min:8',
         ]);
 
+        //dd($request);
         Empleado::create([
             'cedula'=> $request->cedula,
             'nombres'=> $request->nombres,
@@ -45,16 +46,16 @@ class EmpleadoController extends Controller
             'departamento_id'=> $request->departamento_id,
             'cargo_id'=> $request->cargo_id,
         ]);
-        return redirect()->route('empleado.index');
+        return redirect()->route('employee.index');
     }
     public function show(){
     }
-    public function edit(Empleado $empleado){
-        $empleado = Empleado::find($empleado->id);
-        $cargo = Cargo::get();
-        $departamento = Departamento::get();
+    public function edit(Empleado $employee){
+        $employee = Empleado::find($employee->id);
+        $cargos = Cargo::get();
+        $departamentos = Departamento::get();
         return view('configuration.employee.EmployeeUpdating',
-        ['empleado'=> $empleado, 'cargo'=>$cargo, 'departamento'=>$departamento]);
+        ['employee'=> $employee, 'cargos'=>$cargos, 'departamentos'=>$departamentos]);
     }
     public function update(Request $request, Empleado $empleado){
 
@@ -62,7 +63,7 @@ class EmpleadoController extends Controller
             'cedula' => 'required|regex:/^([0-9]*)$/',
             'nombres' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'apellidos' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
-            'sueldo' => 'required|float',
+            'sueldo' => 'required|decimal:0,5',
             'telefono' => 'required|regex:/^([0-9]*)$/',
             'direccion' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'email' => 'required|string|email|max:255|min:8',

@@ -8,26 +8,25 @@ use Illuminate\Http\Request;
 class DevengadoController extends Controller
 {
     public function index(){
-        $devengado = Devengado::get();
+        $accrued = Devengado::get();
         //dd($devengado);
         return view('configuration.accrued.ConfigurationAccrued',
-            ['devengado'=> $devengado]);
+            ['accrued'=> $accrued]);
     }
     public function create(){
         $devengado = Devengado::get();
         return view('configuration.accrued.ConfigurationAccruedCreate',
-            ['devengado'=> null]);
+            ['accrued'=> null]);
     }
     public function store(Request $request){
-        
+        //dd($request);
         $request->validate([
-            'alimentacion' => 'required|float',
-            'vivienda' => 'required|float',
-            'transporte' => 'required|float',
-            'extra' => 'required|float',
+            'alimentacion' => 'required|decimal:0,5',
+            'vivienda' => 'required|decimal:0,5',
+            'transporte' => 'required|decimal:0,5',
+            'extra' => 'required|decimal:0,5',
             'fechaRegistro' => 'required|date'
         ]);
-
         Devengado::create([
             'alimentacion'=> $request->alimentacion,
             'vivienda'=> $request->vivienda,
@@ -35,26 +34,28 @@ class DevengadoController extends Controller
             'extra'=> $request->extra,
             'fechaRegistro'=> $request->fechaRegistro
         ]);
-        return redirect()->route('devengado.index');
+        return redirect()->route('accrued.index');
     }
     public function show(){
     }
-    public function edit(Devengado $devengado){
-        $devengado = Devengado::find($devengado->id);
+    public function edit(Devengado $accrued){
+        //dd($accrued);
+        $accrued = Devengado::find($accrued->id);
         return view('configuration.accrued.ConfigurationAccruedUpdating',
-            ['devengado'=> $devengado]);
+            ['accrued'=> $accrued]);
     }
-    public function update(Request $request, Devengado $devengado){
-
+    public function update(Request $request, Devengado $accrued){
+        
         $request->validate([
-            'alimentacion' => 'required|float',
-            'vivienda' => 'required|float',
-            'transporte' => 'required|float',
-            'extra' => 'required|float',
+            'alimentacion' => 'required|decimal:0,5',
+            'vivienda' => 'required|decimal:0,5',
+            'transporte' => 'required|decimal:0,5',
+            'extra' => 'required|decimal:0,5',
             'fechaRegistro' => 'required|date'
         ]);
+        
 
-        $devengado->update([
+        $accrued->update([
             'alimentacion'=> $request->alimentacion,
             'vivienda'=> $request->vivienda,
             'transporte'=> $request->transporte,
@@ -62,13 +63,15 @@ class DevengadoController extends Controller
             'fechaRegistro'=> $request->fechaRegistro
         ]);
 
-        return redirect()->route('devengado.index');
+        return redirect()->route('accrued.index');
     }
-    public function destroy(Devengado $devengado){
-        
-        $devengado = Devengado::find($devengado->id);
-        $devengado->delete();
-        return redirect()->route('devengado.index');
+
+    //TODO 
+    public function destroy(Devengado $accrued){
+        dd($accrued);
+        $accrued = Devengado::find($accrued->id);
+        $accrued->delete();
+        return redirect()->route('accrued.index');
 
     }
 }

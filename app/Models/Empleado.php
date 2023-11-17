@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Empleado extends Model
 {
@@ -23,24 +25,20 @@ class Empleado extends Model
         'cargo_id',
     ];
     
-    public function logNominaEmpleado() : BelongsTo{
-        return $this->belongsTo(LogNominaEmpleado::class);
+    public function logNominas() : HasMany{
+        return $this->hasMany(LogNomina::class);
     }
 
-    public function nominaEmpleado() : BelongsTo{
-        return $this->belongsTo(NominaEmpleado::class);
-    }
-
-    public function sueldo() : BelongsTo{
-        return $this->belongsTo(Sueldo::class);
+    public function sueldo() : HasOne{
+        return $this->hasOne(Sueldo::class);
     }
 
 
-    public function departamento():HasMany{
-        return $this->hasMany(Departamento::class);
+    public function departamento():BelongsTo{
+        return $this->belongsTo(Departamento::class);
     }
 
-    public function cargo():HasMany{
-        return $this->hasMany(Cargo::class);
+    public function cargo():BelongsTo{
+        return $this->belongsTo(Cargo::class);
     }
 }

@@ -41,8 +41,7 @@ class DescuentoController extends Controller
     }
     public function edit(Descuento $discount){
         $discount = Descuento::find($discount->id);
-        return view('configuration.discount.ConfigurationDiscountUpdating',
-            ['discount'=> $discount]);
+        return view('configuration.discount.ConfigurationDiscountUpdating',['discount'=> $discount]);
     }
     public function update(Request $request, Descuento $discount){
 

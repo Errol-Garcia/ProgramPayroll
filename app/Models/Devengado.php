@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Devengado extends Model
 {
@@ -16,7 +17,7 @@ class Devengado extends Model
         'extra',
         'fechaRegistro',
     ];
-    public function devengado() : BelongsTo{
-        return $this->belongsTo(Sueldo::class);
+    public function devengado() : HasMany{
+        return $this->hasMany(Sueldo::class);
     }
 }

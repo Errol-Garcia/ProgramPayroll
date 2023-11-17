@@ -41,6 +41,8 @@ class DevengadoController extends Controller
     public function edit(Devengado $accrued){
         //dd($accrued);
         $accrued = Devengado::find($accrued->id);
+        //dd($accrued);
+
         return view('configuration.accrued.ConfigurationAccruedUpdating',
             ['accrued'=> $accrued]);
     }

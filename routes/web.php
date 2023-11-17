@@ -8,6 +8,8 @@ use App\Http\Controllers\DevengadoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NominaEmpleadoController;
+use App\Http\Controllers\LogNominaEmpleadoController;
+use App\Http\Controllers\SueldoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('WelcomeAdminView');
-}) -> name('home')->middleware('auth');
+}) -> name('home');//->middleware('auth');
 //--------------------------------------
 //Route::get('', function () {
 
@@ -31,28 +33,28 @@ Route::get('/', function () {
 //Route::get('/',[IndexController::class, 'index'])->name('index');
 //----------------Resources---------------
 
-Route::resource('accrued',DevengadoController::class)->middleware('auth');
-Route::resource('discount',DescuentoController::class)->middleware('auth');
-Route::resource('department',DepartamentoController::class)->middleware('auth');
-Route::resource('employee',EmpleadoController::class)->middleware('auth');
-Route::resource('payroll',NominaEmpleadoController::class)->middleware('auth');
+Route::resource('accrued',DevengadoController::class);
+Route::resource('discount',DescuentoController::class);
+Route::resource('department',DepartamentoController::class);
+Route::resource('employee',EmpleadoController::class);
+Route::resource('payroll',SueldoController::class);
 
-//Route::get('/accrued',[DevengadoController::class,'index'])->name('accrued');
+Route::get('/PayrollPartial', function () {
+    return view('configuration.employee.EmployeePayrollPartial');
+}) -> name('PayrollPartial');
 
-//Route::get('/accruedCreate',[DevengadoController::class, 'create']) -> name('accruedCreate');
-//Route::get('/departmentCreate',[DepartamentoController::class, 'create']) -> name('departmentCreate');
-//Route::get('/employeeCreate',[EmpleadoController::class, 'create']) -> name('employeeCreate');
 
-//Route::get('/discount',[DescuentoController::class,'index'])->name('discount');
-//Route::get('/department',[DepartamentoController::class,'index'])->name('department');
-//Route::get('/employee',[EmpleadoController::class,'index'])->name('employee');
-//Route::get('/payrollPartial',[NominaEmpleadoController::class])->name('payrollPartial');
-//Route::get('/payroll',[NominaEmpleadoController::class,'index'])->name('payroll');
-//===============sesión
-
+/*
 Route::get('/login', [AuthenticationSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticationSessionController::class, 'store'])->name('start');
 Route::post('/logout', [AuthenticationSessionController::class, 'destroy'])->name('logout');
 
 Route::get('/register', [RegisterdUserSessionController::class, 'create'])->name('register');
-Route::post('/register', [RegisteredUserController::class, 'store'])->name('save');
+Route::post('/register', [RegisterdUserSessionController::class, 'store'])->name('save');
+*/
+/*
+->middleware('auth')
+->middleware('auth')
+->middleware('auth')
+->middleware('auth')
+->middleware('auth')*/

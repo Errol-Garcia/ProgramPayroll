@@ -26,7 +26,7 @@
         ?>
                 <div class="card" style="width: 50rem; display: flex; justify-content: center;">
                     <div class="card-header">
-                        lista Nomina
+                        log nomina
                     </div>
                     <div class="p-4">
                         <table class="table align-middle">
@@ -38,29 +38,29 @@
                                     <th style="text-align: center" scope="col">Apellidos</th>
                                     <th style="text-align: center" scope="col">Telefono</th>
                                     <th style="text-align: center" scope="col">Sueldo Neto</th>
-                                    <th style="text-align: center" scope="col">Opcion</th>
+                                    <th style="text-align: center" scope="col">Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @isset($empleado)
-                                    <?php $cont = 1; ?>
-                                    @foreach ($empleado as $emple)
-                                        <tr>
-                                            <td style="text-align: center">{{ $cont }}</td>
-                                            <td style="text-align: center">{{ $emple->cedula }}</td>
-                                            <td style="text-align: center">{{ $emple->nombres }}</td>
-                                            <td style="text-align: center">{{ $emple->apellidos }}</td>
-                                            <td style="text-align: center">{{ $emple->telefono }}</td>
-                                            <td style="text-align: center">{{ $emple->nominaEmpleado->sueldoNeto }}</td>
-                                            <td style="text-align: center">
-                                                <a class='text-success' href="{{ route('employee.edit', $emple) }}">
-                                                    <i class='bi bi-pencil-square'></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php $cont++; ?>
-                                    @endforeach
-                                @endisset
+                                <?php
+                                /*
+                        $n=1;
+                            $s=$db->prepare('SELECT e.id,e.cedula, e.nombres, e.apellidos, e.telefono, n.id, n."sueldoNeto"
+                                            from "nominaEmpleado" AS n inner join empleado AS e ON n.id_empleado=e.id');
+                            $s->execute();
+                            $result=$s->fetchAll();
+                            foreach($result as $neto){  
+                                echo "<tr><td scope='row'>".$n."</td>".
+                                "<td>".$neto[1]."</td>".
+                                "<td>".$neto[2]."</td>".
+                                "<td>".$neto[3]."</td>".
+                                "<td>".$neto[4]."</td>".
+                                "<td>".$neto[6]."</td>".
+                                "<td><a class='text-success' href='../sueldo/update.php?sueldo=".$neto[0]."'>
+                                <i class='bi bi-journal-arrow-up'></i></i></i> </a></td></tr>";
+                                $n++;
+                            }*/
+                                ?>
                             </tbody>
                         </table>
 

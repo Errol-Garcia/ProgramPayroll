@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('horasExtras');
             $table->float('vhora');
             $table->float('bono');
-            //$table->integer('empleado_id');
-            //$table->integer('descuento_id');
-            //$table->integer('devengado_id');
+            $table->float('valorDevengado');
+            $table->float('valorDescuento');
+            $table->float('sueldoNeto');
             $table->timestamps();
         });
     }

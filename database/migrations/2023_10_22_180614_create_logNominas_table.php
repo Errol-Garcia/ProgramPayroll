@@ -17,8 +17,10 @@ return new class extends Migration
             $table->integer('horasExtras');
             $table->float('vhora');
             $table->float('bono');
-            $table->float('sueldo');
-            $table->date('fechaRegistro');
+            $table->float('valorDevengado');
+            $table->float('valorDescuento');
+            $table->float('sueldoNeto');
+            $table->timestamp('fechaRegistro');
             $table->timestamps();
         });
     }

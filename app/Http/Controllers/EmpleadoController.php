@@ -32,6 +32,8 @@ class EmpleadoController extends Controller
             'telefono' => 'required|regex:/^([0-9]*)$/',
             'direccion' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'email' => 'required|string|email|max:255|min:8',
+            'departamento_id' => 'required|integer',
+            'cargo_id' => 'required|integer'
         ]);
 
         //dd($request);
@@ -67,6 +69,8 @@ class EmpleadoController extends Controller
             'telefono' => 'required|regex:/^([0-9]*)$/',
             'direccion' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'email' => 'required|string|email|max:255|min:8',
+            'departamento_id' => 'required|integer',
+            'cargo_id' => 'required|integer'
         ]);
 
         $empleado->update([

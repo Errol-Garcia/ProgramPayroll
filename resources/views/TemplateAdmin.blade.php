@@ -65,9 +65,13 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('employee.index') }}">Listado</a></li>
-                            <li><a class="dropdown-item" href="{{ route('payroll.index') }}">Nomina parcial</a></li>
+                            <li><a class="dropdown-item" href="{{ route('PayrollPartial') }}">Nomina parcial</a></li>
                             <li><a class="dropdown-item" href="{{ route('payroll.index') }}">Nomina</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('PayrollPartial') }}">Log
+                            Nomina</a>
                     </li>
                 </ul>
             </div>

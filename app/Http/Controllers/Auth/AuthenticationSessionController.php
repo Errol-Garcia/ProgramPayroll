@@ -13,16 +13,17 @@ class AuthenticationSessionController extends Controller
         return view("auth.Login");
     }
     public function store(Request $request){
-        $credentials = $request->validate([
-            'usuario' => 'required|string|max:255|min:8',
-            'password' => 'required|string'
-        ]);
-
+        
+        /*$credentials = $request->validate([
+            'usuario' => 'required|regex:/^([A-Za-zÑñ0-9\s\-]*)$/|between:1,15',
+            'password' =>  'required|regex:/^([A-Za-zÑñ0-9\s\-]*)$/|between:1,15'
+        ]);*/
+        dd($request);
         //Incorrecto, genera excepción y retorna al formulario de login
-        if(!Auth::attempt($credentials)){
+        if(!Auth::attempt($request)){
             throw ValidationException::withMessages(
                 [
-                    'usuario' => 'Autenticación incorrecta'
+                    'mensaje' => 'Autenticación incorrecta'
                 ]
             );
         }

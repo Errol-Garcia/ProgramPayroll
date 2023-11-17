@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('nominaEmpleados', function (Blueprint $table) {
-            $table->foreignId('empleado_id')->constrained('empleados');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('usuario');
+            $table->string('password');
+            $table->string('cedula');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('nominaEmpleados', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('empleado_id');
-        });
+        Schema::dropIfExists('users');
     }
 };

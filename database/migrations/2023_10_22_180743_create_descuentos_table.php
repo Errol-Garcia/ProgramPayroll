@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('salud');
             $table->float('pension');
             $table->float('parafiscal');
-            $table->date('fechaRegistro');
+            $table->timestamp('fechaRegistro');
             $table->timestamps();
         });
     }

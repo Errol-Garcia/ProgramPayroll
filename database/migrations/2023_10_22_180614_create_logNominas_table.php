@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('valorDevengado');
             $table->float('valorDescuento');
             $table->float('sueldoNeto');
-            $table->timestamp('fechaRegistro');
+            $table->date('fechaRegistro');
             $table->timestamps();
         });
     }

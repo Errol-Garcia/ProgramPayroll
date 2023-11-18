@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('vivienda');
             $table->float('transporte');
             $table->float('extra');
-            $table->timestamp('fechaRegistro');
+            $table->date('fechaRegistro');
             $table->timestamps();
         });
     }

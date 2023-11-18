@@ -31,7 +31,7 @@
     @enderror
 
     <label for="parafiscal" class="form-label">Fecha</label>
-    <input type="timestamp" class="form-control" id="Fecha" name="fechaRegistro"
+    <input type="date" class="form-control" id="Fecha" name="fechaRegistro"
         value="{{ old('fechaRegistro', $discount) }}" aria-describedby="emailHelp" require>
     @error('fechaRegistro')
         <div class="text-small text-danger">{{ $message }}</div>

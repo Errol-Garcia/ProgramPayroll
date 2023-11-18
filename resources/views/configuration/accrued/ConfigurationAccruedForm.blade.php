@@ -30,7 +30,7 @@
     @enderror
 
     <label for="fec" class="form-label">Fecha</label>
-    <input type="timestamp" class="form-control" id="fecha" name="fechaRegistro" required placeholder="YYYY-MM-DD"
+    <input type="date" class="form-control" id="fecha" name="fechaRegistro" required placeholder="YYYY-MM-DD"
         value="{{ old('fechaRegistro', $accrued) }}" aria-describedby="emailHelp" require>
     @error('fechaRegistro')
         <div class="text-small text-danger">{{ $message }}</div>

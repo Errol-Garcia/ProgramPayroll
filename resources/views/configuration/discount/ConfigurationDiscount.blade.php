@@ -47,7 +47,7 @@
             }
         ?>
                 </div>
-                <div class="card" style="width: 50rem; margin-left: 200px">
+                <div class="card mx-auto" style="width: 50rem;">
                     <div style="display: flex; justify-content: Right;">
                         <a href="{{ route('discount.create') }}" class="btn btn-primary">añadir
 

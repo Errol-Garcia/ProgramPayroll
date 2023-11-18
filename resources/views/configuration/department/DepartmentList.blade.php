@@ -37,15 +37,10 @@
             }
         ?>
                 </div>
-                <div class="card" style="width: 50rem;">
-                    <div style="display: flex; justify-content: Right;">
-
-                        <a href="{{ route('department.create') }}" class="btn btn-primary">añadir
-                        </a>
-                    </div>
+                <div class="card mx-auto" style="width: 50rem;">
                     <div class="card">
                         <div class="card-header">
-                            lista de Departamentos
+                            Lista de departamentos
                         </div>
                         <div class="p-4">
                             <table class="table align-middle">
@@ -76,6 +71,11 @@
                                     @endisset
                                 </tbody>
                             </table>
+                            <div style="display: flex;">
+
+                                <a href="{{ route('department.create') }}" class="btn btn-primary">añadir
+                                </a>
+                            </div>
 
                         </div>
                     </div>

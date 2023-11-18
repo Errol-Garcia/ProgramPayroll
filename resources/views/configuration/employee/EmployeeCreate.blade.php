@@ -27,12 +27,13 @@
                 </div>
                 <div class="card" style="width: 50rem;">
                     <div class="card-header">
-                        Registro de Empleado
+                        Registro de empleado
                     </div>
                     <div class="card-body ">
                         <form action="{{ route('employee.store') }}" method="POST">
                             @include('configuration.employee.EmployeeForm')
-                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <br>
+                            <button type="submit" class="btn btn-primary center">Crear</button>
                         </form>
                     </div>
                 </div>

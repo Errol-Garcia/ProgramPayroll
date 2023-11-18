@@ -1,5 +1,5 @@
 @csrf
-<div class="mb-3">
+<div class="card mx-auto">
     <label for="departamento" class="form-label">Departamtento</label>
     <input type="text" class="form-control" id="departamento" name="nombre" value="{{ old('nombre', $department) }}"
         aria-describedby="emailHelp" required>

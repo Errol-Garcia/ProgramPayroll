@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class SueldoController extends Controller
 {
     public function index(){
-        $sueldo = Sueldo::with('empleado')->get();
-        //sdd($sueldo);
+        $sueldo = Sueldo::with('empleado')->get()->toArray();
+        //$sueldo = Sueldo::get();
+        //dd($sueldo);
         return view('configuration.employee.EmployeePayroll', ['sueldos'=>$sueldo]);
     }
     public function create(Request $request){
@@ -78,9 +79,57 @@ class SueldoController extends Controller
         //$cedula = $request->input('cedula');
 
     }
-    public function edit($id){
+    public function edit(int $sueldo){
+        //dd(/*$descuento, $devengado, */$sueldo);
+        $descuento = Descuento::get();
+        $devengado = Devengado::get();
+        $sueldo = Sueldo::find($sueldo);
+        $descuento_sueldo = Descuento::find($sueldo->descuento_id);
+        $devengado_sueldo = Devengado::find($sueldo->devengado_id);
+        //$empleado = Devengado::find($sueldo->empleado_id);
+        //dd($sueldo);
+        return view('configuration.employee.EmployeePayrollUpdating', 
+            ['sueldo'=>$sueldo,'devengado'=> $devengado, 'descuento'=>$descuento,
+            'devengado_sueldo'=> $devengado_sueldo, 'descuento_sueldo'=>$descuento_sueldo,
+            ]);
     }
-    public function update(Request $request){
+    
+    public function update(Request $request, Sueldo $sueldo){
+        $sueldo = Sueldo::find($request->id);
+        $descuento = Descuento::find($request->descuento_id);
+        $devengado = Devengado::find($request->devengado_id);
+        $empleado = Empleado::find($sueldo->empleado_id);
+        //dd($sueldo, $request, $empleado);
+
+        $auxilioT=0;
+        if($request->sueldo <= 1160000){
+            $auxilioT = $devengado->transporte;
+        }
+        $TotalBasic = ($empleado->sueldo*$request->diasT)/30;
+
+        $extras = ($request->vhora*$request->horasExtra) + $request->bono;
+
+        $TotalesDevengados = $TotalBasic+$extras+$devengado->alimentacion+$devengado->vivienda+$devengado->extra+$auxilioT;
+        //$TotalesDevengados = $TotalBasic+$auxilioT;
+        $salud = ($TotalesDevengados-$auxilioT)*($descuento->salud/100);
+        $pension = ($TotalesDevengados-$auxilioT)*($descuento->pension/100);
+        $arl = ($TotalesDevengados-$auxilioT)*($descuento->parafiscal/100);
+
+        $TotalDescuentos = $salud + $pension + $arl;
+        $NetoPagar = $TotalesDevengados - $TotalDescuentos;
+
+        $sueldo->update([
+            'diasT'=> $request->diasT,
+            'horasExtras'=>$request->horasExtra,
+            'vhora'=>$request->vhora,
+            'bono'=>$request->bono,
+            'valorDevengado'=>$TotalesDevengados,
+            'valorDescuento'=>$TotalDescuentos,
+            'sueldoNeto'=>$NetoPagar,
+            'descuento_id'=>$request->descuento_id,
+            'devengado_id'=>$request->devengado_id,
+        ]);
+        return redirect()->route('payroll.index');
     }
     public function destroy($id){
 

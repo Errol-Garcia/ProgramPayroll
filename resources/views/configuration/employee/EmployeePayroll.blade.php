@@ -48,15 +48,16 @@
                                     @isset($sueldos)
                                         <?php $cont = 1; ?>
                                         @foreach ($sueldos as $sueldo)
+                                            <?php $empleado = $sueldo['empleado']; ?>
                                             <tr>
                                                 <td style="text-align: center">{{ $cont }}</td>
-                                                <td style="text-align: center">{{ $sueldo->empleado->cedula }}</td>
-                                                <td style="text-align: center">{{ $sueldo->empleado->nombres }}</td>
-                                                <td style="text-align: center">{{ $sueldo->empleado->apellidos }}</td>
-                                                <td style="text-align: center">{{ $sueldo->empleado->telefono }}</td>
-                                                <td style="text-align: center">{{ number_format($sueldo->sueldoNeto) }}</td>
+                                                <td style="text-align: center">{{ $empleado['cedula'] }}</td>
+                                                <td style="text-align: center">{{ $empleado['nombres'] }}</td>
+                                                <td style="text-align: center">{{ $empleado['apellidos'] }}</td>
+                                                <td style="text-align: center">{{ $empleado['telefono'] }}</td>
+                                                <td style="text-align: center">{{ number_format($sueldo['sueldoNeto']) }}</td>
                                                 <td style="text-align: center">
-                                                    <a class='text-success' href="{{ route('employee.edit', $sueldo) }}">
+                                                    <a class='text-success' href="{{ route('payroll.edit', $sueldo['id']) }}">
                                                         <i class='bi bi-pencil-square'></i>
                                                     </a>
                                                 </td>

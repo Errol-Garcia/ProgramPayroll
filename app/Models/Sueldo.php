@@ -11,6 +11,18 @@ class Sueldo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'diasT',
+        'horasExtras',
+        'vhora',
+        'bono',
+        'valorDevengado',
+        'valorDescuento',
+        'sueldoNeto',
+        'empleado_id',
+        'descuento_id',
+        'devengado_id',
+    ];
     public function empleado():BelongsTo{
         return $this->belongsTo(Empleado::class);
     }

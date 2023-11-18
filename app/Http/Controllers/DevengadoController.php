@@ -68,9 +68,8 @@ class DevengadoController extends Controller
         return redirect()->route('accrued.index');
     }
 
-    //TODO 
     public function destroy(Devengado $accrued){
-        dd($accrued);
+        
         $accrued = Devengado::find($accrued->id);
         $accrued->delete();
         return redirect()->route('accrued.index');

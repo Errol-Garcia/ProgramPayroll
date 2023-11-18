@@ -3,39 +3,60 @@
     <div class="container-fluid">
         <div class="row center py-5">
             <div class="col-3 ">
-                <?php
-                /*$id=$_GET['sueldo'];
-                $s=$db->prepare('SELECT s.id,s."diasT", s.horasextras, s.vhora, s.bono, e.salario from sueldo as s
-                                    inner join empleado AS e ON e.id = s.idempleado where s.id=:idd');
-                $s->bindValue(':idd',$id, PDO::PARAM_INT);
-                $s->execute();
-                $sueldo=$s->fetchAll();*/
-                ?>
-                <form action="../../services/sueldo/update.php" method="POST">
+                <form action="{{ route('payroll.update', $sueldo) }}" method="POST">
+                    @method('PUT')
+                    @csrf
                     <div class="mb-3">
                         <label for="diasT" class="form-label">N° Dias Trabajados</label>
-                        <input type="text" class="form-control" name="diasT" value="<?php /*echo $sueldo[0]['diasT']
-                        */?>"
+                        <input type="text" class="form-control" name="diasT" value="{{ $sueldo->diasT }}"
                             aria-describedby="emailHelp" required>
 
                         <label for="horasExtra" class="form-label">N° Horas extras</label>
-                        <input type="text" class="form-control" name="horasExtra" value="<?php //echo $sueldo[0]['horasextras']
-                        ?>"
+                        <input type="text" class="form-control" name="horasExtra" value="{{ $sueldo->horasExtras }}"
                             aria-describedby="emailHelp" required>
 
                         <label for="vhora" class="form-label">Valor hora mes</label>
-                        <input type="text" class="form-control" name="vhora" value="<?php //echo $sueldo[0]['vhora']
-                        ?>"
+                        <input type="text" class="form-control" name="vhora" value="{{ $sueldo->vhora }}"
                             aria-describedby="emailHelp" required>
 
                         <label for="bono" class="form-label">Valor Bono</label>
-                        <input type="text" class="form-control" name="bono" value="<?php //echo $sueldo[0]['bono']
-                        ?>"
+                        <input type="text" class="form-control" name="bono" value="{{ $sueldo->bono }}"
                             aria-describedby="emailHelp" required>
-                        <input type="hidden" name="id" value="<?php //echo $sueldo[0]['id']
-                        ?>">
-                        <input type="hidden" name="sueldo" value="<?php //echo $sueldo[0]['salario']
-                        ?>">
+                        <input type="hidden" name="id" value= "{{ $sueldo->id }}">
+                        <input type="hidden" name="sueldo" value="{{ $sueldo->sueldoNeto }}">
+
+                        <select class="form-select" name="devengado_id" aria-label="Default select example">
+                            <option value="{{ $sueldo->devengado_id }}" selected>{{ $devengado_sueldo->fechaRegistro }}
+                            </option>
+                            @isset($devengado)
+                                @foreach ($devengado as $accrued)
+                                    <option value="{{ $accrued->id }}">
+                                        {{ $accrued->fechaRegistro }}
+                                    </option>
+                                @endforeach
+                            @endisset
+                        </select>
+                        @error('devengado_id')
+                            <div class="text-small text-danger">{{ $message }}</div>
+                        @enderror
+                        </td>
+                        <td>
+                            <select class="form-select" name="descuento_id" aria-label="Default select example">
+                                <option value="{{ $sueldo->descuento_id }}" selected>
+                                    {{ $descuento_sueldo->fechaRegistro }}
+                                </option>
+                                @isset($descuento)
+                                    @foreach ($descuento as $discount)
+                                        <option value="{{ $discount->id }}">
+                                            {{ $discount->fechaRegistro }}
+                                        </option>
+                                    @endforeach
+                                @endisset
+                            </select>
+                            @error('descuento_id')
+                                <div class="text-small text-danger">{{ $message }}</div>
+                            @enderror
+                            {{-- <input type="hidden" name="sueldo" value="{{ $employee->sueldo }}"> --}}
                     </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </form>

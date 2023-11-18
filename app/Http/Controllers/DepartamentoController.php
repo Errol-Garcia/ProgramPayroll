@@ -33,7 +33,6 @@ class DepartamentoController extends Controller
     public function show(){
     }
     public function edit(Departamento $department){
-        
         $department = Departamento::find($department->id);
         return view('configuration.department.DepartmentUpdating',
             ['department'=> $department]);
@@ -46,11 +45,11 @@ class DepartamentoController extends Controller
         $department->update([
             'nombre'=> $request->nombre
         ]);
-        
+
         return redirect()->route('department.index');
     }
     public function destroy(Departamento $department){
-        
+
         $department = Departamento::find($department->id);
         $department->delete();
         return redirect()->route('department.index');

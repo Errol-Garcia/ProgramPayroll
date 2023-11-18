@@ -20,7 +20,7 @@
                 },
                 title: {
                     text: 'Promedio por cliente',
-                    align: 'left'
+                    align: 'center'
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

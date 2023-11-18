@@ -73,13 +73,20 @@
                                             <td style="text-align: center">{{ $descu->pension }}</td>
                                             <td style="text-align: center">{{ $descu->parafiscal }}</td>
                                             <td style="text-align: center">{{ $descu->fechaRegistro }}
-                                            <td style="text-align: center">
-                                                <a class='text-success' href="{{ route('discount.edit', $descu) }}">
-                                                    <i class='bi bi-pencil-square'></i>
-
-                                                </a>
-                                                <a class='text-danger' href="{{ route('discount.destroy', $descu) }}"><i
-                                                        class='bi bi-trash'></i>
+                                            <td style="text-align: center" class="center">
+                                                <div style="display: flex;" >
+                                                    <form method="POST" action="{{ route('discount.destroy', $descu) }}" >
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="text-danger" style="background-color: transparent; border: none; outline: none"
+                                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este descuento?')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                    <a class='text-success' href="{{ route('discount.edit', $descu) }}">
+                                                        <i class='bi bi-pencil-square'></i>
+                                                    </a>
+                                                </div>
 
                                             </td>
                                         </tr>

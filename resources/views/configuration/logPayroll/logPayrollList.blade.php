@@ -24,7 +24,7 @@
                 <?php
             }
         ?>
-                <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
+                <div class="card mx-auto">
                     <div class="card-header">
                         Log nomina
                     </div>

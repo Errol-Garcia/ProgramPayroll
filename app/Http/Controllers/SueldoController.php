@@ -23,28 +23,28 @@ class SueldoController extends Controller
         if($empleado != null){
             $sueldo = Sueldo::where('empleado_id', $empleado->id)->first();
         }
-        
+
         //dd($sueldo);
-        
+
         return view('configuration.employee.EmployeePayrollPartial',
         ['employee' => $empleado, 'sueldo'=>$sueldo,
-        'devengado'=> $devengado, 'descuento'=>$descuento]);
+        'devengado'=> $devengado]);
     }
     public function store(Request $request){
-        
+
     }
     public function show(Request $request, $cedula){
-        
+
         $empleado = Empleado::where('cedula',$cedula);
         dd($empleado);
         //$cedula = $request->input('cedula');
-        
+
     }
     public function edit($id){
     }
     public function update(Request $request){
     }
     public function destroy($id){
-        
+
     }
 }

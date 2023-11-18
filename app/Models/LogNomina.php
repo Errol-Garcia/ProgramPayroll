@@ -11,6 +11,18 @@ class LogNomina extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'diasT',
+        'horasExtras',
+        'vhora',
+        'bono',
+        'valorDevengado',
+        'valorDescuento',
+        'sueldoNeto',
+        'fechaRegistro',
+        'empleado_id'
+    ];
+
     public function Empleados() : BelongsTo{
         return $this->belongsTo(Empleado::class);
     }

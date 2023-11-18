@@ -7,8 +7,7 @@ use App\Http\Controllers\DescuentoController;
 use App\Http\Controllers\DevengadoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\NominaEmpleadoController;
-use App\Http\Controllers\LogNominaEmpleadoController;
+use App\Http\Controllers\LogNominaController;
 use App\Http\Controllers\SueldoController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,10 +37,14 @@ Route::resource('discount',DescuentoController::class);
 Route::resource('department',DepartamentoController::class);
 Route::resource('employee',EmpleadoController::class);
 Route::resource('payroll',SueldoController::class);
+Route::resource('logNomina',LogNominaController::class);
+
 
 Route::get('/PayrollPartial', function () {
     return view('configuration.employee.EmployeePayrollPartial');
 }) -> name('PayrollPartial');
+
+Route::get('/log/{sueldos}', [LogNominaController::class, 'almacenar']) -> name('log');
 
 
 /*

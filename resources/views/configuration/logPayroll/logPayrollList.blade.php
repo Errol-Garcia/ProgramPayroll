@@ -37,30 +37,29 @@
                                     <th style="text-align: center" scope="col">Nombres</th>
                                     <th style="text-align: center" scope="col">Apellidos</th>
                                     <th style="text-align: center" scope="col">Telefono</th>
+                                    <th style="text-align: center" scope="col">valor devevengado</th>
+                                    <th style="text-align: center" scope="col">valor descuento</th>
                                     <th style="text-align: center" scope="col">Sueldo Neto</th>
                                     <th style="text-align: center" scope="col">Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                /*
-                        $n=1;
-                            $s=$db->prepare('SELECT e.id,e.cedula, e.nombres, e.apellidos, e.telefono, n.id, n."sueldoNeto"
-                                            from "nominaEmpleado" AS n inner join empleado AS e ON n.id_empleado=e.id');
-                            $s->execute();
-                            $result=$s->fetchAll();
-                            foreach($result as $neto){
-                                echo "<tr><td scope='row'>".$n."</td>".
-                                "<td>".$neto[1]."</td>".
-                                "<td>".$neto[2]."</td>".
-                                "<td>".$neto[3]."</td>".
-                                "<td>".$neto[4]."</td>".
-                                "<td>".$neto[6]."</td>".
-                                "<td><a class='text-success' href='../sueldo/update.php?sueldo=".$neto[0]."'>
-                                <i class='bi bi-journal-arrow-up'></i></i></i> </a></td></tr>";
-                                $n++;
-                            }*/
-                                ?>
+                                @isset($sueldos)
+                                    <?php $cont = 1; ?>
+                                    @foreach ($sueldos as $sueldo)
+                                        <tr>
+                                            <td style="text-align: center">{{ $cont }}</td>
+                                            <td style="text-align: center">{{ $sueldo->cedula }}</td>
+                                            <td style="text-align: center">{{ $sueldo->nombres }}</td>
+                                            <td style="text-align: center">{{ $sueldo->apellidos }}</td>
+                                            <td style="text-align: center">{{ $sueldo->telefono }}</td>
+                                            <td style="text-align: center">{{ number_format($sueldo->valorDevengado) }}</td>
+                                            <td style="text-align: center">{{ number_format($sueldo->valorDescuento) }}</td>
+                                            <td style="text-align: center">{{ number_format($sueldo->sueldoNeto) }}</td>
+                                        </tr>
+                                        <?php $cont++; ?>
+                                    @endforeach
+                                @endisset
                             </tbody>
                         </table>
 

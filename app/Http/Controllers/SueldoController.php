@@ -28,7 +28,7 @@ class SueldoController extends Controller
 
         return view('configuration.employee.EmployeePayrollPartial',
         ['employee' => $empleado, 'sueldo'=>$sueldo,
-        'devengado'=> $devengado]);
+        'devengado'=> $devengado, 'descuento'=>$descuento]);
     }
     public function store(Request $request){
 

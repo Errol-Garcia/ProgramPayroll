@@ -54,7 +54,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @else
-                        <form action="../../services/nomina/create.php" method="POST">
+                        <form action="{{ route('payroll.store') }}" method="POST">
+                            @csrf
                             <div class="card" style="width: 50rem;">
                                 <div class="card-header">Empleados</div>
                                 <div class="p-4">
@@ -107,12 +108,7 @@
                                                         @isset($devengado)
                                                             @foreach ($devengado as $accrued)
                                                                 <option value="{{ $accrued->id }}">
-                                                                    {{-- @isset($employee)
-                                                                        @selected(old('cargo_id', $employee) == $employee->id)
-                                                                    @else
-                                                                        @selected(old('cargo_id', $employee) == $car->id)
-                                                                    @endisset --}}
-                                                                    {{ $accrued->nombre }}
+                                                                    {{ $accrued->fechaRegistro }}
                                                                 </option>
                                                             @endforeach
                                                         @endisset
@@ -128,12 +124,7 @@
                                                         @isset($descuento)
                                                             @foreach ($descuento as $discount)
                                                                 <option value="{{ $discount->id }}">
-                                                                    {{-- @isset($employee)
-                                                                        @selected(old('cargo_id', $employee) == $employee->id)
-                                                                    @else
-                                                                        @selected(old('cargo_id', $employee) == $car->id)
-                                                                    @endisset --}}
-                                                                    {{ $discount->nombre }}
+                                                                    {{ $discount->fechaRegistro }}
                                                                 </option>
                                                             @endforeach
                                                         @endisset
@@ -148,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="center">
-                                <input type="hidden" name="id" value="{{ $employee->id }}">
+                                <input type="hidden" name="empleado_id" value="{{ $employee->id }}">
                                 <input type="hidden" name="sueldo" value="{{ $employee->sueldo }}">
                                 <button type="submit" class="btn btn-primary btn-dsdv">Registrar</button>
                             </div>

@@ -5,6 +5,7 @@
             <div class="col-5 ">
                 <form action="{{ route('department.store') }}" method="POST">
                     @include('configuration.department.DepartmentForm')
+                    <br>
                     <button class="btn btn-primary" type="submit"> Crear </button>
                 </form>
                 {{-- <div class="my-4">

@@ -47,16 +47,10 @@
             }
         ?>
                 </div>
-                <div class="card mx-auto" style="width: 50rem;">
-                    <div style="display: flex; justify-content: Right;">
-                        <a href="{{ route('discount.create') }}" class="btn btn-primary">añadir
-
-                        </a>
-                    </div>
+                <div class="card mx-auto">
                     <div class="card-header">
                         Descuento
                     </div>
-
                     <div class="p-4">
                         <table class="table align-middle">
                             <thead>
@@ -69,6 +63,7 @@
                                     <th style="text-align: center" scope="col" colspan="2">Opciones</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @isset($descuento)
                                     @foreach ($descuento as $descu)
@@ -89,9 +84,16 @@
                                     @endforeach
                                 @endisset
                             </tbody>
+
                         </table>
+                        <div style="display: flex; ">
+                            <a href="{{ route('discount.create') }}" class="btn btn-primary">añadir
+
+                            </a>
+                        </div>
 
                     </div>
+
                 </div>
             </div>
         </div>

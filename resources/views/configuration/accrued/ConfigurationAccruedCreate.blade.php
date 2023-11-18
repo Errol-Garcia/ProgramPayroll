@@ -5,7 +5,7 @@
             <div class="col-3 ">
                 <form action="{{ route('accrued.store') }}" method="POST">
                     @include('configuration.accrued.ConfigurationAccruedForm')
-
+                    <br>
                     <button type="submit" class="btn btn-primary">Crear</button>
                 </form>
             </div>

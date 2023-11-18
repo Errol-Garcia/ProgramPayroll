@@ -24,9 +24,9 @@
                 <?php
             }
         ?>
-                <div class="card" style="width: 50rem; display: flex; justify-content: center;">
+                <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
                     <div class="card-header">
-                        lista Nomina
+                        Lista nomina
                     </div>
                     <div class="p-4">
                         <table class="table align-middle">

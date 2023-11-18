@@ -35,13 +35,10 @@
                 }
             ?>
                 </div>
-                <div class="card justify-content-center">
-                    <div style="display: flex; justify-content: Right;">
-                        <a href="{{ route('employee.create') }}" class="btn btn-primary">añadir
-                        </a>
-                    </div>
+                <div class="card mx-auto">
+
                     <div class="card-header">
-                        lista de Empleados
+                        Lista de empleados
                     </div>
                     <div class="p-4">
                         <table class="table align-middle" style='justify-content: Right;'>
@@ -86,6 +83,10 @@
                                 @endisset
                             </tbody>
                         </table>
+                        <div style="display: flex; ">
+                            <a href="{{ route('employee.create') }}" class="btn btn-primary">añadir
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -24,9 +24,9 @@
                 <?php
             }
         ?>
-                <div class="card" style="width: 50rem; display: flex; justify-content: center;">
+                <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
                     <div class="card-header">
-                        log nomina
+                        Log nomina
                     </div>
                     <div class="p-4">
                         <table class="table align-middle">
@@ -49,7 +49,7 @@
                                             from "nominaEmpleado" AS n inner join empleado AS e ON n.id_empleado=e.id');
                             $s->execute();
                             $result=$s->fetchAll();
-                            foreach($result as $neto){  
+                            foreach($result as $neto){
                                 echo "<tr><td scope='row'>".$n."</td>".
                                 "<td>".$neto[1]."</td>".
                                 "<td>".$neto[2]."</td>".

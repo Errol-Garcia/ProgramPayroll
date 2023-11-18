@@ -37,11 +37,8 @@
             }
         ?>
                 </div>
-                <div class="card" style="width: 60rem; margin-left: 200px">
-                    <div style="display: flex; justify-content: Right;">
+                <div class="card mx-auto" style="width: 60rem; margin-left: 200px">
 
-                        <a href="{{ route('accrued.create') }}" class="btn btn-primary">añadir </a>
-                    </div>
                     <div class="card-header">
                         Devengado
                     </div>
@@ -78,6 +75,10 @@
                                 @endisset
                             </tbody>
                         </table>
+                        <div style="display: flex;">
+
+                            <a href="{{ route('accrued.create') }}" class="btn btn-primary">añadir </a>
+                        </div>
                     </div>
                 </div>
             </div>

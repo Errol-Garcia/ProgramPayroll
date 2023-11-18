@@ -51,6 +51,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('accrued.index') }}">Devengado</a></li>
                             <li><a class="dropdown-item" href="{{ route('discount.index') }}">Descuento</a></li>
+                            <li><a class="dropdown-item" href="{{ route('post.index') }}">Cargo</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

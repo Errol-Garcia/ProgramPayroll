@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Cargo extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nombre'
+    ];
     public function empleados() : HasMany{
         return $this->hasMany(Empleado::class);
     }

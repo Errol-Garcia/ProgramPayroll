@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticationSessionController;
 use App\Http\Controllers\Auth\RegisterdUserSessionController;
+use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DescuentoController;
 use App\Http\Controllers\DevengadoController;
@@ -38,6 +39,7 @@ Route::resource('department',DepartamentoController::class);
 Route::resource('employee',EmpleadoController::class);
 Route::resource('payroll',SueldoController::class);
 Route::resource('logNomina',LogNominaController::class);
+Route::resource('post',CargoController::class);
 
 
 Route::get('/PayrollPartial', function () {
@@ -46,7 +48,6 @@ Route::get('/PayrollPartial', function () {
 
 Route::get('/log/{sueldos}', [LogNominaController::class, 'almacenar']) -> name('log');
 Route::get('/statistics', [LogNominaController::class, 'estadistica']) -> name('estadistica');
-
 
 /*
 Route::get('/login', [AuthenticationSessionController::class, 'create'])->name('login');

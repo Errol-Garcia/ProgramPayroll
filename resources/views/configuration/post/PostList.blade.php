@@ -8,7 +8,7 @@
             if(isset($_GET['mensaje']) and $_GET['mensaje']=='Eliminado'){
         ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Eliminado</strong> departamento con exito..
+                        <strong>Eliminado</strong> Cargo con exito...
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php
@@ -19,7 +19,7 @@
             if(isset($_GET['mensaje']) and $_GET['mensaje']=='Error'){
         ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Error</strong> vuelve a intentarlo..
+                        <strong>Error</strong> vuelve a intentarlo...
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php
@@ -30,7 +30,7 @@
             if(isset($_GET['mensaje']) and $_GET['mensaje']=='Actualizado'){
         ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Actualizacion</strong> se hizo con exito..
+                        <strong>Actualizacion</strong> se hizo con exito...
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php
@@ -40,7 +40,7 @@
                 <div class="card mx-auto" style="width: 50rem;">
                     <div class="card">
                         <div class="card-header">
-                            Lista de departamentos
+                            Lista de cargos
                         </div>
                         <div class="p-4">
                             <table class="table align-middle">
@@ -52,23 +52,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @isset($department)
+                                    @isset($post)
                                         <?php $cont = 1; ?>
-                                        @foreach ($department as $depart)
+                                        @foreach ($post as $pos)
                                             <tr>
                                                 <td style="text-align: center">{{ $cont }}</td>
-                                                <td style="text-align: center">{{ $depart->nombre }}</td>
+                                                <td style="text-align: center">{{ $pos->nombre }}</td>
                                                 <td style="text-align: center" class="center">
                                                     <div style="display: flex">
-                                                        <form method="POST" action="{{ route('department.destroy', $depart) }}">
+                                                        <form method="POST" action="{{ route('post.destroy', $pos) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="text-danger" style="background-color: transparent; border: none; outline: none"
-                                                                onclick="return confirm('¿Estás seguro de que deseas eliminar este departamento?')">
+                                                                onclick="return confirm('¿Estás seguro de que deseas eliminar este cargo?')">
                                                                 <i class="bi bi-trash"></i>
                                                             </button>
                                                         </form>
-                                                        <a class='text-success' href="{{ route('department.edit', $depart) }}"><i
+                                                        <a class='text-success' href="{{ route('post.edit', $pos) }}"><i
                                                             class='bi bi-pencil-square'></i>
                                                     </div>
 
@@ -82,7 +82,7 @@
                             </table>
                             <div style="display: flex;">
 
-                                <a href="{{ route('department.create') }}" class="btn btn-primary">añadir
+                                <a href="{{ route('post.create') }}" class="btn btn-primary">añadir
                                 </a>
                             </div>
 

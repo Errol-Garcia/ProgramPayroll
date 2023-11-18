@@ -24,48 +24,55 @@
                 <?php
             }
         ?>
-                <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
-                    <div class="card-header">
-                        Lista nomina
-                    </div>
-                    <div class="p-4">
-                        <table class="table align-middle">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center" scope="col">#</th>
-                                    <th style="text-align: center" scope="col">Cedula</th>
-                                    <th style="text-align: center" scope="col">Nombres</th>
-                                    <th style="text-align: center" scope="col">Apellidos</th>
-                                    <th style="text-align: center" scope="col">Telefono</th>
-                                    <th style="text-align: center" scope="col">Sueldo Neto</th>
-                                    <th style="text-align: center" scope="col">Opcion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @isset($empleado)
-                                    <?php $cont = 1; ?>
-                                    @foreach ($empleado as $emple)
-                                        <tr>
-                                            <td style="text-align: center">{{ $cont }}</td>
-                                            <td style="text-align: center">{{ $emple->cedula }}</td>
-                                            <td style="text-align: center">{{ $emple->nombres }}</td>
-                                            <td style="text-align: center">{{ $emple->apellidos }}</td>
-                                            <td style="text-align: center">{{ $emple->telefono }}</td>
-                                            <td style="text-align: center">{{ $emple->nominaEmpleado->sueldoNeto }}</td>
-                                            <td style="text-align: center">
-                                                <a class='text-success' href="{{ route('employee.edit', $emple) }}">
-                                                    <i class='bi bi-pencil-square'></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php $cont++; ?>
-                                    @endforeach
-                                @endisset
-                            </tbody>
-                        </table>
+                <form action="{{ route('logNomina.store') }}" method="POST">
+                    @csrf
+                    <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
+                        <div class="card-header">
+                            Lista nomina
+                        </div>
+                        <div class="p-4">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center" scope="col">#</th>
+                                        <th style="text-align: center" scope="col">Cedula</th>
+                                        <th style="text-align: center" scope="col">Nombres</th>
+                                        <th style="text-align: center" scope="col">Apellidos</th>
+                                        <th style="text-align: center" scope="col">Telefono</th>
+                                        <th style="text-align: center" scope="col">Sueldo Neto</th>
+                                        <th style="text-align: center" scope="col">Opcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
+                                    @isset($sueldos)
+                                        <?php $cont = 1; ?>
+                                        @foreach ($sueldos as $sueldo)
+                                            <tr>
+                                                <td style="text-align: center">{{ $cont }}</td>
+                                                <td style="text-align: center">{{ $sueldo->empleado->cedula }}</td>
+                                                <td style="text-align: center">{{ $sueldo->empleado->nombres }}</td>
+                                                <td style="text-align: center">{{ $sueldo->empleado->apellidos }}</td>
+                                                <td style="text-align: center">{{ $sueldo->empleado->telefono }}</td>
+                                                <td style="text-align: center">{{ number_format($sueldo->sueldoNeto) }}</td>
+                                                <td style="text-align: center">
+                                                    <a class='text-success' href="{{ route('employee.edit', $sueldo) }}">
+                                                        <i class='bi bi-pencil-square'></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <?php $cont++; ?>
+                                        @endforeach
+                                    @endisset
+                                </tbody>
+                            </table>
+                            <input type="hidden" name="sueldos" value="{{ json_encode($sueldos) }}">
+                            <div style="display: flex; ">
+                                <button type="submit"class="btn btn-primary">Almacenar Nomina</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     @endsection

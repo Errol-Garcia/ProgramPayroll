@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class SueldoController extends Controller
 {
     public function index(){
-        $Sueldo = Sueldo::get();
-        return view('configuration.employee.EmployeePayroll');
+        $sueldo = Sueldo::with('empleado')->get();
+        //sdd($sueldo);
+        return view('configuration.employee.EmployeePayroll', ['sueldos'=>$sueldo]);
     }
     public function create(Request $request){
         //dd($request);
@@ -28,7 +29,7 @@ class SueldoController extends Controller
 
         return view('configuration.employee.EmployeePayrollPartial',
         ['employee' => $empleado, 'sueldo'=>$sueldo,
-        'devengado'=> $devengado, 'descuento'=>$descuento]);
+        'devengado'=> $devengado, 'descuento'=>$descuento, 'cedula'=>"df"]);
     }
     public function store(Request $request){
         $descuento = Descuento::find($request->descuento_id);
@@ -42,14 +43,15 @@ class SueldoController extends Controller
 
         $extras = ($request->vhora*$request->horasExtra) + $request->bono;
 
-        $TotalesDevengados = $TotalBasic+$auxilioT;
+        $TotalesDevengados = $TotalBasic+$extras+$devengado->alimentacion+$devengado->vivienda+$devengado->extra+$auxilioT;
+        //$TotalesDevengados = $TotalBasic+$auxilioT;
         $salud = ($TotalesDevengados-$auxilioT)*($descuento->salud/100);
         $pension = ($TotalesDevengados-$auxilioT)*($descuento->pension/100);
         $arl = ($TotalesDevengados-$auxilioT)*($descuento->parafiscal/100);
 
         $TotalDescuentos = $salud + $pension + $arl;
-        $Neto = $TotalesDevengados - $TotalDescuentos;
-        $NetoPagar = $Neto+$extras;
+        $NetoPagar = $TotalesDevengados - $TotalDescuentos;
+        //$NetoPagar = $Neto;//+$extras;
 
         Sueldo::create([
             'diasT'=> $request->diasT,
@@ -65,7 +67,7 @@ class SueldoController extends Controller
         ]);
         return view('configuration.employee.EmployeePayrollPartial',
         ['employee' => null, 'sueldo'=>null,
-        'devengado'=> null, 'descuento'=>null]);
+        'devengado'=> null, 'descuento'=>null, 'mensaje'=>"registrado"]);
 
         //dd($request);
     }

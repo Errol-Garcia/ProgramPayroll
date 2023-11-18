@@ -15,8 +15,6 @@
                             <input type="text" name="cedula" placeholder="Cedula" class="form-control"
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             <button type="submit" class="btn btn-primary btn-buscar" id="btn-buscar">Buscar</button>
-                            {{-- <a href="{{ route('payroll.create', ['cedula' => $cedula]) }}"
-                            class="btn btn-primary btn-buscar">Buscar</a> --}}
                         </div>
                     </div>
                 </form>
@@ -32,7 +30,7 @@
                 }
             ?>
 
-                    <?php
+                    {{-- <?php
                 if(isset($_GET['mensaje']) and $_GET['mensaje']=='Error'){
             ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -41,12 +39,12 @@
                     </div>
                     <?php
                 }
-            ?>
+            ?> --}}
                 </div>
             </div>
             <div class="col-9">
                 {{-- @isset($_POST['cedula']) --}}
-
+                {{-- @if (/*isset($cedula) &&*/ $cedula != null) --}}
                 @if (isset($employee) && $employee != null)
                     @if (isset($sueldo) && $sueldo != null)
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -151,6 +149,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
+
+                {{-- @endif --}}
                 {{-- @endisset --}}
             </div>
         </div>

@@ -70,7 +70,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('PayrollPartial') }}">Log
+                        <a class="nav-link active" aria-current="page" href="{{ route('logNomina.index') }}">Log
                             Nomina</a>
                     </li>
                 </ul>

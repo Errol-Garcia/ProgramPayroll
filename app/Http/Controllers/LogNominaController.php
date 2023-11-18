@@ -48,4 +48,27 @@ class LogNominaController extends Controller
     public function almacenar($sueldos){
         dd($sueldos);
     }
+    public function estadistica(){
+        $log = DB::select('SELECT e.nombres, e.apellidos, AVG(l."sueldoNeto") as promedio_sueldo
+        FROM "logNominas" as l
+        JOIN empleados as e ON e.id = l.empleado_id
+        GROUP BY e.nombres, e.apellidos;
+        ');
+
+        //dd($log);
+
+        $json="[";
+        foreach($log as $obj){
+            $json=$json."{";
+            $json=$json.'"name":"'.$obj->nombres.' '.$obj->apellidos.''.'",';
+            $json=$json.'"y":'.$obj->promedio_sueldo;     
+            $json=$json."},";    
+        }
+        $json=$json."]";
+        $json=str_replace(",]","]",$json);
+        
+        //dd($log, $json);
+
+        return view('configuration.logPayroll.statistic',['datas'=> $json]);
+    }
 }

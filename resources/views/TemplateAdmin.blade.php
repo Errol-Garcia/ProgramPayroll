@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/bootstrap.css') }}'>
     <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/miStylos.css') }}'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ asset('css/grafica.css') }}'>
     <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/accessibility.js') }}"></script>
+    <script src="{{ asset('js/exporting.js') }}"></script>
+    <script src="{{ asset('js/highcharts.js') }}"></script>
 </head>
 
 <body>
@@ -72,6 +76,10 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('logNomina.index') }}">Log
                             Nomina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('estadistica') }}">
+                            Estadistica</a>
                     </li>
                 </ul>
             </div>

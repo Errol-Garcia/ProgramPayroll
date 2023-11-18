@@ -45,6 +45,7 @@ Route::get('/PayrollPartial', function () {
 }) -> name('PayrollPartial');
 
 Route::get('/log/{sueldos}', [LogNominaController::class, 'almacenar']) -> name('log');
+Route::get('/statistics', [LogNominaController::class, 'estadistica']) -> name('estadistica');
 
 
 /*

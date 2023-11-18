@@ -76,9 +76,11 @@
                                             <td style="text-align: center">
                                                 <a class='text-success' href="{{ route('discount.edit', $descu) }}">
                                                     <i class='bi bi-pencil-square'></i>
+
                                                 </a>
                                                 <a class='text-danger' href="{{ route('discount.destroy', $descu) }}"><i
                                                         class='bi bi-trash'></i>
+
                                             </td>
                                         </tr>
                                     @endforeach

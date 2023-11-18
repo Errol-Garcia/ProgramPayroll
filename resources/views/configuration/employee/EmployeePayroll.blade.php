@@ -68,7 +68,7 @@
                             </table>
                             <input type="hidden" name="sueldos" value="{{ json_encode($sueldos) }}">
                             <div style="display: flex; ">
-                                <button type="submit"class="btn btn-primary">Almacenar Nomina</button>
+                                <button type="submit"class="btn btn-primary center">Almacenar nomina</button>
                             </div>
                         </div>
                     </div>

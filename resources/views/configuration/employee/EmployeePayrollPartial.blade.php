@@ -1,6 +1,6 @@
 @extends('TemplateAdmin');
 @section('content')
-    <div class="container p" >
+    <div class="container" >
         <div class="row py-4">
             <div class="col-3" >
                 {{ $cedula = '' }}

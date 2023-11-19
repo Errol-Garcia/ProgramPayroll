@@ -2,7 +2,7 @@
 @section('content')
     <figure class="highcharts-figure">
         <div id="container"></div>
-
+        Esta grafica se hizo con el fin de tomar deciciones segun el empleado que tenga un mayor promedio en su sueldo neto
     </figure>
     <script>
         $(function() {

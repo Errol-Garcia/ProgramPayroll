@@ -14,10 +14,10 @@ class AuthenticationSessionController extends Controller
     }
     public function store(Request $request){
         
-        /*$credentials = $request->validate([
+        $credentials = $request->validate([
             'usuario' => 'required|regex:/^([A-Za-zÑñ0-9\s\-]*)$/|between:1,15',
             'password' =>  'required|regex:/^([A-Za-zÑñ0-9\s\-]*)$/|between:1,15'
-        ]);*/
+        ]);
         dd($request);
         //Incorrecto, genera excepción y retorna al formulario de login
         if(!Auth::attempt($request)){

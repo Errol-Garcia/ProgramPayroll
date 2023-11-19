@@ -10,7 +10,7 @@ class Rol extends Model
 {
     use HasFactory;
 
-    public function sesion() : BelongsTo{
-        return $this->belongsTo(Sesion::class);
+    public function users() : BelongsTo{
+        return $this->belongsTo(User::class);
     }
 }

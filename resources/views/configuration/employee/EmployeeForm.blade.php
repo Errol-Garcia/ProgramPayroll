@@ -52,7 +52,7 @@
             <input placeholder="Salario" type="text" id="salario" name="sueldo" class="form-control"
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                 value="{{ old('sueldo', $employee) }}">
-            @error('telefono')
+            @error('sueldo')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
             {{-- <input type="hidden" name="id" value="{{ old('id', $employee) }}"> --}}

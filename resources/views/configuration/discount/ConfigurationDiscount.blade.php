@@ -95,8 +95,8 @@
                             </tbody>
 
                         </table>
-                        <div style="display: flex; ">
-                            <a href="{{ route('discount.create') }}" class="btn btn-primary">añadir
+                        <div style="display: flex; " class="center">
+                            <a href="{{ route('discount.create') }}" class="btn btn-primary">Añadir
 
                             </a>
                         </div>

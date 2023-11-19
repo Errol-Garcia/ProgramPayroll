@@ -58,7 +58,6 @@
             {{-- <input type="hidden" name="id" value="{{ old('id', $employee) }}"> --}}
         </td>
         <td>
-
             <select class="form-select" name="cargo_id" aria-label="Default select example">
                 <option value="" selected>Seleccionar Cargo</option>
                 @isset($cargo)

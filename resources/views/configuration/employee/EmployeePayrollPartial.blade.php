@@ -1,16 +1,16 @@
 @extends('TemplateAdmin');
 @section('content')
-    <div class="container">
-        <div class="row py-2">
-            <div class="col-3">
+    <div class="container" >
+        <div class="row py-4">
+            <div class="col-3" >
                 {{ $cedula = '' }}
                 <form action="{{ route('payroll.create') }}" method="GET">
                     @csrf
-                    <div class="card" style="width: 17rem;">
+                    <div class="card" style="width: 17rem; ">
                         <div class="card-header">
                             Consulta Empleado
                         </div>
-                        <div class="card-body card-flex">
+                        <div class="card-body card-flex mx-auto">
 
                             <input type="text" name="cedula" placeholder="Cedula" class="form-control"
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -23,7 +23,7 @@
                 if(isset($_GET['mensaje']) and $_GET['mensaje']=='registrado'){
             ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Registrado</strong> se agrego con exito..
+                        <strong>Registrado</strong> se agrego con exito...
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php
@@ -48,13 +48,13 @@
                 @if (isset($employee) && $employee != null)
                     @if (isset($sueldo) && $sueldo != null)
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Empleado</strong> ya tiene registrada la pre nomina..
+                            <strong>Empleado</strong> ya tiene registrada la pre nomina...
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @else
                         <form action="{{ route('payroll.store') }}" method="POST">
                             @csrf
-                            <div class="card" style="width: 50rem;">
+                            <div class="card mx-auto" style="width: 55rem;">
                                 <div class="card-header">Empleados</div>
                                 <div class="p-4">
                                     <table class="table align-middle">
@@ -77,32 +77,44 @@
                                     </table>
                                 </div>
                             </div><br>
-                            <div class="card" style="width: 50rem;">
+                            <div class="card mx-auto" style="width: 55rem;">
                                 <div class="card-header">Informacion correspondiente el mes laborado</div>
                                 <div class="card-body">
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td><input type="text" name="diasT" placeholder="Dias Trabajados"
-                                                        class="form-control" aria-label="Sizing example input"
-                                                        aria-describedby="inputGroup-sizing-default"></td>
-
-                                                <td><input type="text" name="horasExtra" placeholder="N° horas extras"
-                                                        class="form-control" aria-label="Sizing example input"
-                                                        aria-describedby="inputGroup-sizing-default"></td>
-
-
-                                                <td><input type="text" name="vhora" placeholder="Valor hora mes"
-                                                        class="form-control" aria-label="Sizing example input"
-                                                        aria-describedby="inputGroup-sizing-default"></td>
-
-                                                <td><input type="text" name="bono" placeholder="Valor bono mes"
-                                                        class="form-control" aria-label="Sizing example input"
-                                                        aria-describedby="inputGroup-sizing-default"></td>
                                                 <td>
+                                                    <label for="diasT" class="center py-2">Días trabajados:</label>
+                                                    <input type="text" id="diasT" name="diasT"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                </td>
+
+
+                                                <td>
+                                                    <label for="horasExtra" class="center mx-auto py-2">N° horas extras:</label>
+                                                    <input type="text" name="horasExtra"
+                                                        class="form-control" aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default">
+                                                    </td>
+
+
+                                                <td>
+                                                    <label for="vhora" class="center mx-auto py-2">Valor bono mes:</label>
+                                                    <input type="text" name="vhora"
+                                                        class="form-control" aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default">
+                                                    </td>
+
+                                                <td>
+                                                    <label for="bono" class="center mx-auto py-2">Bono:</label>
+                                                    <input type="text" name="bono"
+                                                        class="form-control" aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default">
+                                                    </td>
+                                                <td>
+                                                    <label for="devengado_id" class="center mx-auto py-2">Devgado ID:</label>
                                                     <select class="form-select" name="devengado_id"
                                                         aria-label="Default select example">
-                                                        <option value="" selected>Devengado</option>
+                                                        <option value="" selected>Seleccionar</option>
                                                         @isset($devengado)
                                                             @foreach ($devengado as $accrued)
                                                                 <option value="{{ $accrued->id }}">
@@ -116,9 +128,10 @@
                                                     @enderror
                                                 </td>
                                                 <td>
+                                                    <label for="descuento_id" class="center mx-auto py-2">Descuento ID:</label>
                                                     <select class="form-select" name="descuento_id"
                                                         aria-label="Default select example">
-                                                        <option value="" selected>Descuento</option>
+                                                        <option value="" selected>Seleccionar</option>
                                                         @isset($descuento)
                                                             @foreach ($descuento as $discount)
                                                                 <option value="{{ $discount->id }}">
@@ -145,7 +158,7 @@
                     @endif
                 @else
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Empleado</strong> Empleado no existe..
+                        <strong>Empleado</strong> Empleado no existe...
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif

@@ -10,6 +10,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LogNominaController;
 use App\Http\Controllers\SueldoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,7 @@ Route::resource('employee',EmpleadoController::class);
 Route::resource('payroll',SueldoController::class);
 Route::resource('logNomina',LogNominaController::class);
 Route::resource('post',CargoController::class);
+Route::resource('user', UserController::class);
 
 
 Route::get('/PayrollPartial', function () {

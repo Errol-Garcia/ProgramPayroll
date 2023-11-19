@@ -6,7 +6,9 @@
                 <form action="{{ route('discount.store') }}" method="POST">
                     @include('configuration.discount.ConfigurationDiscountForm')
                     <br>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
                 </form>
             </div>
         </div>

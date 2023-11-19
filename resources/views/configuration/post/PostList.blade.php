@@ -80,9 +80,9 @@
                                     @endisset
                                 </tbody>
                             </table>
-                            <div style="display: flex;">
+                            <div style="display: flex;"class="center">
 
-                                <a href="{{ route('post.create') }}" class="btn btn-primary">añadir
+                                <a href="{{ route('post.create') }}" class="btn btn-primary">Añadir
                                 </a>
                             </div>
 

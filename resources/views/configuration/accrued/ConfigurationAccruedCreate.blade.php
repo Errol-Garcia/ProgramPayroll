@@ -6,7 +6,10 @@
                 <form action="{{ route('accrued.store') }}" method="POST">
                     @include('configuration.accrued.ConfigurationAccruedForm')
                     <br>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+
+                    </div>
                 </form>
             </div>
         </div>

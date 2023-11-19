@@ -6,7 +6,10 @@
                 <form action="{{ route('department.store') }}" method="POST">
                     @include('configuration.department.DepartmentForm')
                     <br>
-                    <button class="btn btn-primary" type="submit"> Crear </button>
+                    <div class="center">
+                        <button class="btn btn-primary" type="submit"> Crear </button>
+
+                    </div>
                 </form>
                 {{-- <div class="my-4">
                     <?php

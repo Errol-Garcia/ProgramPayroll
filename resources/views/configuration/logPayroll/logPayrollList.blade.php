@@ -3,27 +3,6 @@
     <div class="container-fluid">
         <div class="row center py-2">
             <div class="col-md-7">
-                <?php
-            if(isset($_GET['mensaje']) and $_GET['mensaje']=='Error'){
-        ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Error</strong> vuelve a intentarlo..
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php
-            }
-        ?>
-
-                <?php
-            if(isset($_GET['mensaje']) and $_GET['mensaje']=='Actualizado'){
-        ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Actualizacion</strong> se hizo con exito..
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php
-            }
-        ?>
                 <div class="card mx-auto">
                     <div class="card-header">
                         Log nomina
@@ -56,13 +35,13 @@
                                             <td style="text-align: center">{{ number_format($sueldo->valorDevengado) }}</td>
                                             <td style="text-align: center">{{ number_format($sueldo->valorDescuento) }}</td>
                                             <td style="text-align: center">{{ number_format($sueldo->sueldoNeto) }}</td>
+                                            <td style="text-align: center">{{ $sueldo->fechaRegistro }}</td>
                                         </tr>
                                         <?php $cont++; ?>
                                     @endforeach
                                 @endisset
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

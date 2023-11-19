@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogNomina;
+use App\Models\Sueldo;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,7 @@ class LogNominaController extends Controller
     public function create(){
     }
     public function store(Request $request){
+        //$request2 = $request;
         $request = json_decode($request->input('sueldos'));
         //dd($request);
         foreach($request as $sueldo){
@@ -34,6 +36,7 @@ class LogNominaController extends Controller
 
             ]);
         }
+        $this->eliminar($request);
         return redirect()->route('logNomina.index');
     }
     public function show(){
@@ -42,8 +45,8 @@ class LogNominaController extends Controller
     }
     public function update(Request $request){
     }
-    public function destroy($id){
-        
+    public function destroy(Request $request){
+        return redirect()->route('logNomina.index');
     }
     public function almacenar($sueldos){
         dd($sueldos);
@@ -70,5 +73,12 @@ class LogNominaController extends Controller
         //dd($log, $json);
 
         return view('configuration.logPayroll.statistic',['datas'=> $json]);
+    }
+
+    public function eliminar( $sueldos){
+        foreach($sueldos as $sueldo){
+            Sueldo::where(
+                'empleado_id',$sueldo->empleado_id)->delete();
+            };
     }
 }

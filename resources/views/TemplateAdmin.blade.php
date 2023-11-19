@@ -30,7 +30,7 @@
                     <li class="nav-item dropdown conten-dropdown">
                         <a class="nav-link dropdown-toggle conten-perfil" href="#" id="navbarDarkDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle perfil">&nbsp;</i>
+                            < class="bi bi-person-circle perfil">&nbsp;
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                             <form action="{{ route('logout') }}" method="POST">

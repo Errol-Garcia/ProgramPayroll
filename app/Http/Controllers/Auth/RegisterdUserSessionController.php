@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use App\Models\Sesion;
+use App\Models\User;
 
 class RegisterdUserSessionController extends Controller
 {
@@ -20,17 +21,17 @@ class RegisterdUserSessionController extends Controller
     }
     public function store(Request $request){
 
-        $request->validate([
+        /*$request->validate([
             'name' => 'required|string|max:255|min:8',
             'email' => 'required|string|email|max:255|min:8|unique:users',
             'password' => ['required','confirmed',Password::default()]
-        ]);
-
-        Sesion::create([
+        ]);*/
+        //dd($request);
+        User::create([
             'nombre' => $request->name,
-            'usuario' => $request->email,
+            'usuario' => $request->usuario,
             'password'=> bcrypt($request->password),
-            'cedula'=> $request->deula,
+            'cedula'=> $request->cedula,
             'rol_id' => $request->rol_id,
         ]);
 

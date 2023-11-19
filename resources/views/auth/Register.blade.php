@@ -22,7 +22,7 @@
                         <td>
                             <label for="rol_id" class="mx-auto py-2">usuario:</label>
                             <div class="input-group mb-3">
-                                <input id="email" name="email" type="email" class="form-control"
+                                <input id="ususario" name="usuario" type="text" class="form-control"
                                     placeholder="Usuario ">
                                 <div class="input-group-append">
                                 </div>
@@ -45,7 +45,7 @@
                         </td>
                         <label for="cedula" class="mx-auto py-2">Cedula:</label>
                         <div class="input-group mb-3">
-                            <input id="email" name="email" type="email" class="form-control" placeholder="Cedula ">
+                            <input id="email" name="cedula" type="text" class="form-control" placeholder="Cedula ">
                             <div class="input-group-append">
                             </div>
                         </div>
@@ -72,15 +72,16 @@
                                 <div class="text-small text-danger">{{ $message }}</div>
                             @enderror
                         </td>
+                        <div class="col-4 center py-4">
+                            <button type="submit" class="btn btn-primary">
+                                Registrar
+                            </button>
+                            </a>
+
+                        </div>
                     </form>
 
-                    <div class="col-4 center py-4">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Registrar
-                        </button>
-                        </a>
 
-                    </div>
                 </div>
             </div>
         </div>

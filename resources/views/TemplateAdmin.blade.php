@@ -33,7 +33,11 @@
                             <i class="bi bi-person-circle perfil">&nbsp;</i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="">Salir</a></li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Salir</button>
+
+                            </form>
                         </ul>
                     </li>
                 </ul>

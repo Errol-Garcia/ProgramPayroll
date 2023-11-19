@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('WelcomeAdminView');
-}) -> name('home');//->middleware('auth');
+}) -> name('home')->middleware('auth');
 //--------------------------------------
 //Route::get('', function () {
 
@@ -34,14 +34,14 @@ Route::get('/', function () {
 //Route::get('/',[IndexController::class, 'index'])->name('index');
 //----------------Resources---------------
 
-Route::resource('accrued',DevengadoController::class);
-Route::resource('discount',DescuentoController::class);
-Route::resource('department',DepartamentoController::class);
-Route::resource('employee',EmpleadoController::class);
-Route::resource('payroll',SueldoController::class);
-Route::resource('logNomina',LogNominaController::class);
-Route::resource('post',CargoController::class);
-Route::resource('user', UserController::class);
+Route::resource('accrued',DevengadoController::class)->middleware('auth');
+Route::resource('discount',DescuentoController::class)->middleware('auth');
+Route::resource('department',DepartamentoController::class)->middleware('auth');
+Route::resource('employee',EmpleadoController::class)->middleware('auth');
+Route::resource('payroll',SueldoController::class)->middleware('auth');
+Route::resource('logNomina',LogNominaController::class)->middleware('auth');
+Route::resource('post',CargoController::class)->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
 
 
 Route::get('/PayrollPartial', function () {
@@ -51,17 +51,10 @@ Route::get('/PayrollPartial', function () {
 Route::get('/log/{sueldos}', [LogNominaController::class, 'almacenar']) -> name('log');
 Route::get('/statistics', [LogNominaController::class, 'estadistica']) -> name('estadistica');
 
-/*
+
 Route::get('/login', [AuthenticationSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticationSessionController::class, 'store'])->name('start');
 Route::post('/logout', [AuthenticationSessionController::class, 'destroy'])->name('logout');
 
 Route::get('/register', [RegisterdUserSessionController::class, 'create'])->name('register');
 Route::post('/register', [RegisterdUserSessionController::class, 'store'])->name('save');
-*/
-/*
-->middleware('auth')
-->middleware('auth')
-->middleware('auth')
-->middleware('auth')
-->middleware('auth')*/

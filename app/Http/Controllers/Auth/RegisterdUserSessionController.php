@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Cargo;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
@@ -13,7 +14,9 @@ use App\Models\Sesion;
 class RegisterdUserSessionController extends Controller
 {
     public function create(){
-        return view("auth.Register");
+        
+        $roles = Rol::get();
+        return view("auth.Register", ['roles'=>$roles]);
     }
     public function store(Request $request){
 

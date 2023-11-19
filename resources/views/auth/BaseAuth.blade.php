@@ -20,7 +20,7 @@
             <div class="col-xxl-4 col-xl-3 col-lg-4 col-md-5 col-sm-6 col-xs-6 col-9">
                 <div class="my-4">
                     <?php
-                        if(isset($_GET['mensaje']) and $_GET['mensaje']=='Error'){
+                        if(isset($mensaje) and $mensaje=='Autenticación incorrecta'){
                     ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Contraseña o correo incorrecto</strong> vuelve a intentarlo..

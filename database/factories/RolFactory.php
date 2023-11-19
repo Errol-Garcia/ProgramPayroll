@@ -17,7 +17,8 @@ class RolFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => $this->faker->firstName(),
+            'descripcion' => $this->faker->firstName(),
         ];
     }
 }

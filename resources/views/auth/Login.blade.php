@@ -9,18 +9,24 @@
             <div class="conten-caja">
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" name="username" id="validationCustomUsername"
+                    <input type="text" class="form-control" name="usuario" id="validationCustomUsername"
                         aria-describedby="inputGroupPrepend" required>
+                    @error('usuario')
+                        <div class="text-small text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="conten-caja">
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-shield-lock"></i></span>
                     <input type="password" class="form-control" name="password" id="inputPassword">
+                    @error('password')
+                        <div class="text-small text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="regis">
-                <a href="">Registrarse</a>
+                <a href="{{ route('register')}}">Registrarse</a>
             </div>
 
             <div class="conten-caja">

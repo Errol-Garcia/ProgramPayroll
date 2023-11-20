@@ -9,9 +9,9 @@
             <div class="conten-caja">
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" name="usuario" id="validationCustomUsername"
+                    <input type="text" class="form-control" name="user" id="validationCustomUsername"
                         aria-describedby="inputGroupPrepend" required>
-                    @error('usuario')
+                    @error('user')
                         <div class="text-small text-danger">{{ $message }}</div>
                     @enderror
                 </div>

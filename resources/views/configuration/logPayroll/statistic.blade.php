@@ -46,14 +46,6 @@
                     data: data
                 }]
             });
-
-            //})
-
-
-
-
-
-
         });
     </script>
 @endsection

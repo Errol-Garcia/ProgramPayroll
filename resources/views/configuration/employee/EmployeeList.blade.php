@@ -59,18 +59,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @isset($empleado)
+                                @isset($employee)
                                     <?php $cont = 1; ?>
-                                    @foreach ($empleado as $emple)
+                                    @foreach ($employee as $emple)
                                         <tr>
                                             <td style="text-align: center">{{ $cont }}</td>
-                                            <td style="text-align: center">{{ $emple->cedula }}</td>
-                                            <td style="text-align: center">{{ $emple->nombres }}</td>
-                                            <td style="text-align: center">{{ $emple->apellidos }}</td>
-                                            <td style="text-align: center">{{ $emple->telefono }}</td>
-                                            <td style="text-align: center">{{ $emple->cargo_id }}</td>
-                                            <td style="text-align: center">{{ $emple->departamento_id }}</td>
-                                            <td style="text-align: center">{{ $emple->direccion }}</td>
+                                            <td style="text-align: center">{{ $emple->identification_card }}</td>
+                                            <td style="text-align: center">{{ $emple->name }}</td>
+                                            <td style="text-align: center">{{ $emple->last_names }}</td>
+                                            <td style="text-align: center">{{ $emple->number_phone }}</td>
+                                            <td style="text-align: center">{{ $emple->post_id }}</td>
+                                            <td style="text-align: center">{{ $emple->department_id }}</td>
+                                            <td style="text-align: center">{{ $emple->address }}</td>
                                             <td style="text-align: center">{{ $emple->email }}</td>
                                             <td style="text-align: center">
                                                 <a class='text-success' href="{{ route('employee.edit', $emple) }}">

@@ -15,14 +15,14 @@ public function create(){
 }
 public function store(Request $request){
     $credentials = $request->validate([
-        'usuario' => 'required|string|max:255|min:3',
+        'user' => 'required|string|max:255|min:3',
         'password' => 'required|string'
     ]);
     //Incorrecto, genera excepción y retorna al formulario de login
     if(!Auth::attempt($credentials)){
         throw ValidationException::withMessages(
             [
-                'usuario' => 'Autenticación incorrecta'
+                'user' => 'Autenticación incorrecta'
             ]
         );
     }

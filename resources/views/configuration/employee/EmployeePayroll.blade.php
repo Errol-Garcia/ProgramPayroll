@@ -45,19 +45,20 @@
                                 </thead>
                                 <tbody>
 
-                                    @isset($sueldos)
+                                    @isset($salaries)
                                         <?php $cont = 1; ?>
-                                        @foreach ($sueldos as $sueldo)
-                                            <?php $empleado = $sueldo['empleado']; ?>
+
+                                        @foreach ($salaries as $salary)
+                                            <?php $employee = $salary['employee']; ?>
                                             <tr>
                                                 <td style="text-align: center">{{ $cont }}</td>
-                                                <td style="text-align: center">{{ $empleado['cedula'] }}</td>
-                                                <td style="text-align: center">{{ $empleado['nombres'] }}</td>
-                                                <td style="text-align: center">{{ $empleado['apellidos'] }}</td>
-                                                <td style="text-align: center">{{ $empleado['telefono'] }}</td>
-                                                <td style="text-align: center">{{ number_format($sueldo['sueldoNeto']) }}</td>
+                                                <td style="text-align: center">{{ $employee['identification_card'] }}</td>
+                                                <td style="text-align: center">{{ $employee['names'] }}</td>
+                                                <td style="text-align: center">{{ $employee['last_names'] }}</td>
+                                                <td style="text-align: center">{{ $employee['number_phone'] }}</td>
+                                                <td style="text-align: center">{{ number_format($salary['net_income']) }}</td>
                                                 <td style="text-align: center">
-                                                    <a class='text-success' href="{{ route('payroll.edit', $sueldo['id']) }}">
+                                                    <a class='text-success' href="{{ route('payroll.edit', $salary['id']) }}">
                                                         <i class='bi bi-pencil-square'></i>
                                                     </a>
                                                 </td>
@@ -67,7 +68,7 @@
                                     @endisset
                                 </tbody>
                             </table>
-                            <input type="hidden" name="sueldos" value="{{ json_encode($sueldos) }}">
+                            <input type="hidden" name="salaries" value="{{ json_encode($salaries) }}">
                             <div style="display: flex; ">
                                 <button type="submit"class="btn btn-primary center">Almacenar nomina</button>
                             </div>

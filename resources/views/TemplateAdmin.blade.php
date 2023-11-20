@@ -56,16 +56,8 @@
                             <li><a class="dropdown-item" href="{{ route('accrued.index') }}">Devengado</a></li>
                             <li><a class="dropdown-item" href="{{ route('discount.index') }}">Descuento</a></li>
                             <li><a class="dropdown-item" href="{{ route('post.index') }}">Cargo</a></li>
+                            <li><a class="dropdown-item" href="{{ route('department.index') }}">Departamento</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Departamento
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('department.index') }}">Listado</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -74,9 +66,10 @@
                             Empleado
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('employee.index') }}">Listado</a></li>
-                            <li><a class="dropdown-item" href="{{ route('PayrollPartial') }}">Nomina parcial</a></li>
-                            <li><a class="dropdown-item" href="{{ route('payroll.index') }}">Nomina</a></li>
+                            <li><a class="dropdown-item" href="{{ route('employee.index') }}">Listado empleados</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('PayrollPartial') }}">Registrar nomina</a></li>
+                            <li><a class="dropdown-item" href="{{ route('payroll.index') }}">Lista Nomina</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

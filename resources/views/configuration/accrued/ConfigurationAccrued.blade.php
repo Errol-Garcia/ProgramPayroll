@@ -58,24 +58,25 @@
                                 @isset($accrued)
                                     @foreach ($accrued as $deven)
                                         <tr>
-                                            <td style="text-align: center">{{ $deven->alimentacion }}</td>
-                                            <td style="text-align: center">{{ $deven->vivienda }}</td>
-                                            <td style="text-align: center">{{ $deven->transporte }}</td>
+                                            <td style="text-align: center">{{ $deven->feeding }}</td>
+                                            <td style="text-align: center">{{ $deven->living_place }}</td>
+                                            <td style="text-align: center">{{ $deven->transport }}</td>
                                             <td style="text-align: center">{{ $deven->extra }}</td>
-                                            <td style="text-align: center">{{ $deven->fechaRegistro }}
+                                            <td style="text-align: center">{{ $deven->registration_date }}
                                             <td style="text-align: center" class="center">
-                                                <div style="display: flex;" >
+                                                <div style="display: flex;">
                                                     <form method="POST" action="{{ route('accrued.destroy', $deven) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="text-danger" style="background-color: transparent; border: none; outline: none"
+                                                        <button type="submit" class="text-danger"
+                                                            style="background-color: transparent; border: none; outline: none"
                                                             onclick="return confirm('¿Estás seguro de que deseas eliminar este departamento?')">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
                                                     </form>
 
                                                     <a class='text-success' href="{{ route('accrued.edit', $deven) }}"><i
-                                                        class='bi bi-pencil-square'></i>
+                                                            class='bi bi-pencil-square'></i>
                                                 </div>
 
                                             </td>

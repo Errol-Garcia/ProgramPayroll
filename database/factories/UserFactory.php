@@ -18,11 +18,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->firstName(),
-            'usuario' => "admin",
+            'name' => $this->faker->firstName(),
+            'user' => "admin",
             'password' => '1q2w3e4r', 
-            'cedula' => "1651561",
-            'rol_id' => 1,
+            'identification_card' => "1651561",
+            'role_id' => 1,
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),// password
         ];

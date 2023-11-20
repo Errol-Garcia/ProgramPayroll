@@ -1,9 +1,9 @@
 @extends('TemplateAdmin');
 @section('content')
-    <div class="container" >
+    <div class="container">
         <div class="row py-4">
-            <div class="col-3" >
-                {{ $cedula = '' }}
+            <div class="col-3">
+                {{ $identification_card = '' }}
                 <form action="{{ route('payroll.create') }}" method="GET">
                     @csrf
                     <div class="card" style="width: 17rem; ">
@@ -12,7 +12,7 @@
                         </div>
                         <div class="card-body card-flex mx-auto">
 
-                            <input type="text" name="cedula" placeholder="Cedula" class="form-control"
+                            <input type="text" name="identification_card" placeholder="Cedula" class="form-control"
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             <button type="submit" class="btn btn-primary btn-buscar" id="btn-buscar">Buscar</button>
                         </div>
@@ -43,8 +43,8 @@
                 </div>
             </div>
             <div class="col-9">
-                {{-- @isset($_POST['cedula']) --}}
-                {{-- @if (/*isset($cedula) &&*/ $cedula != null) --}}
+                {{-- @isset($_POST['identification_card']) --}}
+                {{-- @if (/*isset($identification_card) &&*/ $identification_card != null) --}}
                 @if (isset($employee) && $employee != null)
                     @if (isset($sueldo) && $sueldo != null)
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -68,10 +68,10 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{ $employee->nombres }}</td>
-                                                <td>{{ $employee->apellidos }}</td>
-                                                <td>{{ $employee->telefono }}</td>
-                                                <td>{{ $employee->sueldo }}</td>
+                                                <td>{{ $employee->names }}</td>
+                                                <td>{{ $employee->last_names }}</td>
+                                                <td>{{ $employee->number_phone }}</td>
+                                                <td>{{ $employee->salary }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -84,63 +84,69 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <label for="diasT" class="center py-2">Días trabajados:</label>
-                                                    <input type="text" id="diasT" name="diasT"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                    <label for="worked_days" class="center py-2">Días trabajados:</label>
+                                                    <input type="text" id="worked_days" name="worked_days"
+                                                        class="form-control" aria-label="Sizing example input"
+                                                        aria-describedby="inputGroup-sizing-default">
                                                 </td>
 
 
                                                 <td>
-                                                    <label for="horasExtra" class="center mx-auto py-2">N° horas extras:</label>
-                                                    <input type="text" name="horasExtra"
-                                                        class="form-control" aria-label="Sizing example input"
+                                                    <label for="extra_hours" class="center mx-auto py-2">N° horas
+                                                        extras:</label>
+                                                    <input type="text" name="extra_hours" class="form-control"
+                                                        aria-label="Sizing example input"
                                                         aria-describedby="inputGroup-sizing-default">
-                                                    </td>
+                                                </td>
 
 
                                                 <td>
-                                                    <label for="vhora" class="center mx-auto py-2">Valor bono mes:</label>
-                                                    <input type="text" name="vhora"
-                                                        class="form-control" aria-label="Sizing example input"
+                                                    <label for="hour_value" class="center mx-auto py-2">Valor bono
+                                                        mes:</label>
+                                                    <input type="text" name="hour_value" class="form-control"
+                                                        aria-label="Sizing example input"
                                                         aria-describedby="inputGroup-sizing-default">
-                                                    </td>
+                                                </td>
 
                                                 <td>
                                                     <label for="bono" class="center mx-auto py-2">Bono:</label>
-                                                    <input type="text" name="bono"
-                                                        class="form-control" aria-label="Sizing example input"
+                                                    <input type="text" name="bono" class="form-control"
+                                                        aria-label="Sizing example input"
                                                         aria-describedby="inputGroup-sizing-default">
-                                                    </td>
+                                                </td>
                                                 <td>
-                                                    <label for="devengado_id" class="center mx-auto py-2">Devgado ID:</label>
-                                                    <select class="form-select" name="devengado_id"
+                                                    <label for="accrued_id" class="center mx-auto py-2">Devgado
+                                                        ID:</label>
+                                                    <select class="form-select" name="accrued_id"
                                                         aria-label="Default select example">
                                                         <option value="" selected>Seleccionar</option>
-                                                        @isset($devengado)
-                                                            @foreach ($devengado as $accrued)
+                                                        @isset($accrueds)
+                                                            @foreach ($accrueds as $accrued)
                                                                 <option value="{{ $accrued->id }}">
-                                                                    {{ $accrued->fechaRegistro }}
+                                                                    {{ $accrued->registration_date }}
                                                                 </option>
                                                             @endforeach
                                                         @endisset
                                                     </select>
-                                                    @error('devengado_id')
+                                                    @error('accrued_id')
                                                         <div class="text-small text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <label for="descuento_id" class="center mx-auto py-2">Descuento ID:</label>
-                                                    <select class="form-select" name="descuento_id"
+                                                    <label for="discount_id" class="center mx-auto py-2">Descuento
+                                                        ID:</label>
+                                                    <select class="form-select" name="discount_id"
                                                         aria-label="Default select example">
                                                         <option value="" selected>Seleccionar</option>
-                                                        @isset($descuento)
-                                                            @foreach ($descuento as $discount)
+                                                        @isset($discounts)
+                                                            @foreach ($discounts as $discount)
                                                                 <option value="{{ $discount->id }}">
-                                                                    {{ $discount->fechaRegistro }}
+                                                                    {{ $discount->registration_date }}
                                                                 </option>
                                                             @endforeach
                                                         @endisset
                                                     </select>
-                                                    @error('descuento_id')
+                                                    @error('discount_id')
                                                         <div class="text-small text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </td>
@@ -150,8 +156,8 @@
                                 </div>
                             </div>
                             <div class="center">
-                                <input type="hidden" name="empleado_id" value="{{ $employee->id }}">
-                                <input type="hidden" name="sueldo" value="{{ $employee->sueldo }}">
+                                <input type="hidden" name="employee_id" value="{{ $employee->id }}">
+                                <input type="hidden" name="salary" value="{{ $employee->salary }}">
                                 <button type="submit" class="btn btn-primary btn-dsdv">Registrar</button>
                             </div>
                         </form>

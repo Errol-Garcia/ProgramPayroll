@@ -22,12 +22,12 @@
                         <td>
                             <label for="rol_id" class="mx-auto py-2">usuario:</label>
                             <div class="input-group mb-3">
-                                <input id="ususario" name="usuario" type="text" class="form-control"
-                                    placeholder="Usuario ">
+                                <input id="ususario" name="user" type="text" class="form-control"
+                                    placeholder="user ">
                                 <div class="input-group-append">
                                 </div>
                             </div>
-                            @error('usuario')
+                            @error('user')
                                 <div class="text-small text-danger">{{ $message }}</div>
                             @enderror
                         </td>
@@ -45,7 +45,8 @@
                         </td>
                         <label for="cedula" class="mx-auto py-2">Cedula:</label>
                         <div class="input-group mb-3">
-                            <input id="email" name="cedula" type="text" class="form-control" placeholder="Cedula ">
+                            <input id="email" name="identification_card" type="text" class="form-control"
+                                placeholder="Cedula ">
                             <div class="input-group-append">
                             </div>
                         </div>
@@ -53,22 +54,22 @@
 
                         <td>
                             <label for="rol_id" class="mx-auto py-2">Rol id:</label>
-                            <select class="form-select" name="rol_id" aria-label="Default select example">
+                            <select class="form-select" name="role_id" aria-label="Default select example">
                                 <option value="" selected>Seleccionar</option>
                                 @isset($roles)
                                     @foreach ($roles as $rol)
                                         <option value="{{ $rol->id }}">
                                             @isset($rol)
-                                                @selected(old('rol_id', $rol) == $rol->id)
+                                                @selected(old('role_id', $rol) == $rol->id)
                                             @else
-                                                @selected(old('rol_id', $rol) == $rol->id)
+                                                @selected(old('role_id', $rol) == $rol->id)
                                             @endisset
-                                            {{ $rol->nombre }}
+                                            {{ $rol->name }}
                                         </option>
                                     @endforeach
                                 @endisset
                             </select>
-                            @error('rol_id')
+                            @error('role_id')
                                 <div class="text-small text-danger">{{ $message }}</div>
                             @enderror
                         </td>

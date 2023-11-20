@@ -1,39 +1,39 @@
 @csrf
 <table class="tdEmpleado">
     <tr>
-        <td><input type="text" placeholder="Cedula" class="form-control" id="cedula" name="cedula"
-                value="{{ old('cedula', $employee) }}" aria-describedby="emailHelp" required>
-            @error('cedula')
+        <td><input type="text" placeholder="Cedula" class="form-control" id="cedula" name="identification_card"
+                value="{{ old('identification_card', $employee) }}" aria-describedby="emailHelp" required>
+            @error('identification_card')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>
-        <td><input placeholder="Nombres" value="{{ old('nombres', $employee) }}" type="text" id="nombres"
-                name="nombres" class="form-control" aria-label="Sizing example input"
+        <td><input placeholder="Nombres" value="{{ old('names', $employee) }}" type="text" id="names"
+                name="names" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
-            @error('nombres')
+            @error('names')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>
-        <td><input placeholder="Apellidos" value="{{ old('apellidos', $employee) }}" type="text" id="apellidos"
-                name="apellidos" class="form-control" aria-label="Sizing example input"
+        <td><input placeholder="Apellidos" value="{{ old('last_names', $employee) }}" type="text" id="last_names"
+                name="last_names" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
-            @error('apellidos')
+            @error('last_names')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>
     </tr>
     <tr>
-        <td><input placeholder="Telefono" value="{{ old('telefono', $employee) }}" type="text" id="telefono"
-                name="telefono" class="form-control" aria-label="Sizing example input"
+        <td><input placeholder="Telefono" value="{{ old('number_phone', $employee) }}" type="text" id="number_phone"
+                name="number_phone" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
-            @error('telefono')
+            @error('number_phone')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>
-        <td colspan="2"><input placeholder="Direccion" value="{{ old('direccion', $employee) }}" type="text"
-                id="direccion" name="direccion" class="form-control" aria-label="Sizing example input"
+        <td colspan="2"><input placeholder="Direccion" value="{{ old('address', $employee) }}" type="text"
+                id="address" name="address" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
-            @error('direccion')
+            @error('address')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>
@@ -49,69 +49,53 @@
     </tr>
     <tr>
         <td>
-            <input placeholder="Salario" type="text" id="salario" name="sueldo" class="form-control"
+            <input placeholder="Salario" type="text" id="salario" name="salary" class="form-control"
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                value="{{ old('sueldo', $employee) }}">
-            @error('sueldo')
+                value="{{ old('salary', $employee) }}">
+            @error('salary')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
             {{-- <input type="hidden" name="id" value="{{ old('id', $employee) }}"> --}}
         </td>
         <td>
-            <select class="form-select" name="cargo_id" aria-label="Default select example">
+            <select class="form-select" name="post_id" aria-label="Default select example">
                 <option value="" selected>Seleccionar Cargo</option>
-                @isset($cargo)
-                    @foreach ($cargo as $car)
+
+                @isset($post)
+                    @foreach ($post as $car)
                         <option value="{{ $car->id }}">
                             @isset($employee)
-                                @selected(old('cargo_id', $employee) == $employee->id)
+                                @selected(old('post_id', $employee) == $employee->post_id)
                             @else
-                                @selected(old('cargo_id', $employee) == $car->id)
+                                @selected(old('post_id', $employee) == $car->id)
                             @endisset
-                            {{ $car->nombre }}
+                            {{ $car->name }}
                         </option>
                     @endforeach
                 @endisset
             </select>
-            @error('cargo_id')
+            @error('post_id')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
-            {{-- <select class="form-control" name="cargo_id" id="cargo_id">
-                <option value="0" selected>Seleccione una categoría </option>
-                <!-- old() función que obtiene el valor anterior en la recarga de un formulario
-                    o el valor asignado  -->
-                @isset($cargos)
-                    @foreach ($cargos as $cargo)
-                        <option value="{{ $cargo->id }}"
-                            @isset($employee)
-                                @selected(old('cargo_id', $employee) == $employee->cargo->id)
-                            @else
-                                @selected(old('cargo_id', $employee) == $cargo->id)
-                            @endisset>
-                            {{ $cargo->name }}
-                        </option>
-                    @endforeach
-                @endisset
-            </select> --}}
         </td>
         <td>
             {{-- <label for="" style="display: flex; justify-content: Center;">Departamento</label> --}}
-            <select class="form-select" name="departamento_id" aria-label="Default select example">
+            <select class="form-select" name="department_id" aria-label="Default select example">
                 <option value="" selected>Seleccionar Departamento</option>
-                @isset($departamento)
-                    @foreach ($departamento as $depart)
+                @isset($department)
+                    @foreach ($department as $depart)
                         <option value="{{ $depart->id }}">
                             @isset($empleado)
-                                @selected(old('departamento_id', $employee) == $employee->id)
+                                @selected(old('department_id', $employee) == $employee->department_id)
                             @else
-                                @selected(old('departamento_id', $employee) == $depart->id)
+                                @selected(old('department_id', $employee) == $depart->id)
                             @endisset
-                            {{ $depart->nombre }}
+                            {{ $depart->name }}
                         </option>
                     @endforeach
                 @endisset
             </select>
-            @error('departamento_id')
+            @error('department_id')
                 <div class="text-small text-danger">{{ $message }}</div>
             @enderror
         </td>

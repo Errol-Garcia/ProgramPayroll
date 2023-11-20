@@ -19,14 +19,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre',
-        'usuario',
+        'name',
+        'user',
         'password',
-        'cedula',
+        'identification_card',
         'rol_id'
     ];
-    public function rol():HasMany{
-        return $this->hasMany(Rol::class);
+    public function role():HasMany{
+        return $this->hasMany(Role::class);
     }
     /**
      * The attributes that should be hidden for serialization.
@@ -44,7 +44,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'usuario_verified_at' => 'datetime',
+        'user_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 }

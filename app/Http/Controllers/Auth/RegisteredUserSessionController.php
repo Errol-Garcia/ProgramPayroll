@@ -15,24 +15,25 @@ use App\Models\User;
 class RegisteredUserSessionController extends Controller
 {
     public function create(){
-        
+
         $roles = Role::get();
         return view("auth.Register", ['roles'=>$roles]);
     }
     public function store(Request $request){
+        //dd($request);
 
-        /*$request->validate([
+        $request->validate([
             'name' => 'required|string|max:255|min:8',
             'email' => 'required|string|email|max:255|min:8|unique:users',
             'password' => ['required','confirmed',Password::default()]
-        ]);*/
+        ]);
         //dd($request);
         User::create([
             'name' => $request->name,
-            'user' => $request->usuario,
+            'user' => $request->user,
             'password'=> bcrypt($request->password),
-            'identification _card'=> $request->cedula,
-            'role_id' => $request->rol_id,
+            'identification_card'=> $request->identification_card,
+            'role_id' => $request->role_id,
         ]);
 
         return redirect()->route('login');

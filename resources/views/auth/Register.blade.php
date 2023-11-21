@@ -1,18 +1,19 @@
-@extends('TemplateAdmin')
+@extends('auth.TemplateIndex')
 
 @section('content')
-    <div class="container-sm 100% wide until small breakpoint">
-        <div class="row center py-2">
-            <div class="col-md-3">
-                <div class="my-4">
-                    <p class="center">Registrate</p>
+<br>
+<div class="card mx-auto container-sm 100% wide until small breakpoint" style="background-color: #f0f0f0;">
 
+
+        <div class="row center py-2">
+            <div class=" col-md-3">
+                <div class=" my-4">
+                    <p style="font: small-caps 100%/200% serif; font-size: 30px " class="center">Regístrate</p>
                     <form action="{{ route('save') }}" method="post">
                         @csrf
                         <td>
                             <label for="rol_id" class="mx-auto py-2">Nombre completo:</label>
-                            <input id="name" name="name" type="text" class="form-control"
-                                placeholder="Nombre completo">
+                            <input id="name" name="name" type="text" class="form-control">
                             <div class="input-group-append py-2">
                             </div>
                             @error('name')
@@ -22,8 +23,7 @@
                         <td>
                             <label for="rol_id" class="mx-auto py-2">usuario:</label>
                             <div class="input-group mb-3">
-                                <input id="ususario" name="user" type="text" class="form-control"
-                                    placeholder="user ">
+                                <input id="ususario" name="user" type="text" class="form-control">
                                 <div class="input-group-append">
                                 </div>
                             </div>
@@ -34,8 +34,7 @@
                         <td>
                             <label for="rol_id" class="mx-auto py-2">Contraseña:</label>
                             <div class="input-group mb-3">
-                                <input id="password" name="password" type="password" class="form-control"
-                                    placeholder="Contraseña">
+                                <input id="password" name="password" type="password" class="form-control">
                                 <div class="input-group-append">
                                 </div>
                             </div>
@@ -45,8 +44,7 @@
                         </td>
                         <label for="cedula" class="mx-auto py-2">Cedula:</label>
                         <div class="input-group mb-3">
-                            <input id="email" name="identification_card" type="text" class="form-control"
-                                placeholder="Cedula ">
+                            <input id="email" name="identification_card" type="text" class="form-control">
                             <div class="input-group-append">
                             </div>
                         </div>
@@ -73,16 +71,21 @@
                                 <div class="text-small text-danger">{{ $message }}</div>
                             @enderror
                         </td>
-                        <div class="col-4 center py-4">
-                            <button type="submit" class="btn btn-primary">
-                                Registrar
-                            </button>
-                            </a>
-
+                        <div class="container">
+                            <div class="row" style="display: flex;">
+                                <div class="col-6 center py-4" style="flex: 50%;">
+                                    <button type="submit" class="btn btn-primary">
+                                        Registrar
+                                    </button>
+                                </div>
+                                <div class="col-6 center py-4" style="flex: 50%;">
+                                    <a href="{{ route('login') }}" class="btn btn-primary">
+                                        Salir
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </form>
-
-
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                 <?php
             }
         ?>
-                <form action="{{ route('logNomina.store') }}" method="POST">
+                <form action="{{ route('logPayroll.store') }}" method="POST">
                     @csrf
                     <div class="card mx-auto" style="width: 50rem; display: flex; justify-content: center;">
                         <div class="card-header">

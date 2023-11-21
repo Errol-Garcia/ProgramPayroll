@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log_payroll;
+use App\Models\registered_payroll;
 use App\Models\Salary;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +16,8 @@ class Log_payrollController extends Controller
         $log = Log_payroll::with('employee')->get()->toArray();
         //$log = DB::select('SELECT * FROM log_payrolls as l inner join employees as e on l.employee_id=e.id');
         //dd($log);
-        return view('configuration.logPayroll.logPayrollList', ['salaries'=>$log]);
+        $registered_payrolls = registered_payroll::get();
+        return view('configuration.logPayroll.logPayrollList', ['salaries'=>$log, 'registered_payrolls'=>$registered_payrolls]);
     }
     public function create(){
     }
@@ -22,6 +25,11 @@ class Log_payrollController extends Controller
         //$request2 = $request;
         $request = json_decode($request->input('salaries'));
         //dd($request);
+        
+        $payroll = registered_payroll::create([
+            'registration_date' => Carbon::now()->format('Y-m-d')
+        ]);
+
         foreach($request as $sueldo){
             Log_payroll::create([
                 'worked_days'=> $sueldo->worked_days,
@@ -32,14 +40,15 @@ class Log_payrollController extends Controller
                 'discount_value'=>$sueldo->discount_value,
                 'net_income'=>$sueldo->net_income,
                 'registration_date'=>(new DateTime())->format('Y-m-d'),
-                'employee_id'=>$sueldo->employee_id
-                
+                'employee_id'=>$sueldo->employee_id,
+                'registered_payroll_id'=>$payroll->id
             ]);
         }
         $this->eliminar($request);
-        return redirect()->route('logNomina.index');
+        return redirect()->route('logPayroll.index');
     }
-    public function show(){
+    public function show(registered_payroll $id){
+        dd($id);
     }
     public function edit($id){
     }

@@ -20,10 +20,14 @@ class Log_payroll extends Model
         'discount_value',
         'net_income',
         'registration_date',
-        'employee_id'
+        'employee_id',
+        'registered_payroll_id'
     ];
 
     public function Employee() : BelongsTo{
         return $this->belongsTo(Employee::class);
+    }
+    public function registered_payroll() : BelongsTo{
+        return $this->belongsTo(registered_payroll::class);
     }
 }

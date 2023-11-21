@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('log_payrolls', function (Blueprint $table) {
             $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('registered_payroll_id')->constrained('registered_payrolls');
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('log_payrolls', function (Blueprint $table) {
             $table->dropConstrainedForeignId('employee_id');
+            $table->dropConstrainedForeignId('registered_payroll_id');
         });
     }
 };

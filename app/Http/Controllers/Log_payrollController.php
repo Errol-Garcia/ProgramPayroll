@@ -16,7 +16,8 @@ class Log_payrollController extends Controller
         $log = Log_payroll::with('employee')->get()->toArray();
         //$log = DB::select('SELECT * FROM log_payrolls as l inner join employees as e on l.employee_id=e.id');
         //dd($log);
-        return view('configuration.logPayroll.logPayrollList', ['salaries'=>$log]);
+        $registered_payrolls = registered_payroll::get();
+        return view('configuration.logPayroll.logPayrollList', ['salaries'=>$log, 'registered_payrolls'=>$registered_payrolls]);
     }
     public function create(){
     }
@@ -44,9 +45,10 @@ class Log_payrollController extends Controller
             ]);
         }
         $this->eliminar($request);
-        return redirect()->route('logNomina.index');
+        return redirect()->route('logPayroll.index');
     }
-    public function show(){
+    public function show(registered_payroll $id){
+        dd($id);
     }
     public function edit($id){
     }

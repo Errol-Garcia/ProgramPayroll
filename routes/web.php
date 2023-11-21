@@ -9,6 +9,7 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Log_payrollController;
+use App\Http\Controllers\RegisteredPayrollController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::get('/', function () {
 //Route::get('/',[IndexController::class, 'index'])->name('index');
 //----------------Resources---------------
 
+Route::resource('registered_payroll', RegisteredPayrollController::class)->middleware('auth');
 Route::resource('accrued',AccruedController::class)->middleware('auth');
 Route::resource('discount',DiscountController::class)->middleware('auth');
 Route::resource('department',DepartmentController::class)->middleware('auth');
@@ -42,6 +44,7 @@ Route::resource('payroll',SalaryController::class)->middleware('auth');
 Route::resource('logPayroll',Log_payrollController::class)->middleware('auth');
 Route::resource('post',PostController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('registeredPayroll', RegisteredPayrollController::class)->middleware('auth');
 
 
 Route::get('/PayrollPartial', function () {
@@ -50,6 +53,7 @@ Route::get('/PayrollPartial', function () {
 
 Route::get('/log/{sueldos}', [Log_payrollController::class, 'almacenar']) -> name('log');
 Route::get('/statistics', [Log_payrollController::class, 'estadistica']) -> name('estadistica');
+Route::post('/search', [RegisteredPayrollController::class, 'create'])-> name('search');
 
 
 Route::get('/login', [AuthenticationSessionController::class, 'create'])->name('login');

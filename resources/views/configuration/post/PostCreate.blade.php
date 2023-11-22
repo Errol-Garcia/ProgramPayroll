@@ -6,7 +6,9 @@
                 <form action="{{ route('post.store') }}" method="POST">
                     @include('configuration.post.PostForm')
                     <br>
-                    <button class="btn btn-primary" type="submit"> Crear </button>
+                    <div class="center ">
+                        <button class="btn btn-primary" type="submit"> Crear </button>
+                    </div>
                 </form>
                 {{-- <div class="my-4">
                     <?php

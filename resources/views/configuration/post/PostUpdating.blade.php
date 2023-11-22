@@ -6,7 +6,10 @@
                 <form action="{{ route('post.update', $post) }}" method="POST">
                     @method('PUT')
                     @include('configuration.post.PostForm')
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <br>
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
                 </form>
             </div>
         </div>

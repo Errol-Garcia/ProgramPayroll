@@ -6,7 +6,11 @@
                 <form action="{{ route('department.update', $department) }}" method="POST">
                     @method('PUT')
                     @include('configuration.department.DepartmentForm')
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <br>
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+
+                    </div>
                 </form>
                 {{-- <div class="my-4">
                     <?php

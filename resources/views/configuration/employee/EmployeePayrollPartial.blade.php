@@ -84,7 +84,7 @@
 
 
                                                 <td>
-                                                    <label for="hour_value" class="center mx-auto py-2">Valor bono
+                                                    <label for="hour_value" class="center mx-auto py-2">Valor hora
                                                         mes:</label>
                                                     <input type="text" name="hour_value" class="form-control"
                                                         aria-label="Sizing example input"

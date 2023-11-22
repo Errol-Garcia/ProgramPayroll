@@ -33,7 +33,7 @@ class SalaryController extends Controller
 
         return view('configuration.employee.EmployeePayrollPartial',
         ['employee' => $employee, 'salary'=>$salary,
-        'accrueds'=> $accrueds, 'discounts'=>$discounts, 'identification_card'=>"df"]);
+    'accrueds'=> $accrueds, 'discounts'=>$discounts/*, 'identification_card'=>"df"*/]);
     }
     public function store(Request $request){
         $discount = Discount::find($request->discount_id);

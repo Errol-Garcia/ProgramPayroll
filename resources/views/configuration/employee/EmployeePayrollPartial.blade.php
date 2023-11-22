@@ -46,7 +46,7 @@
                 {{-- @isset($_POST['identification_card']) --}}
                 {{-- @if (/*isset($identification_card) &&*/ $identification_card != null) --}}
                 @if (isset($employee) && $employee != null)
-                    @if (isset($sueldo) && $sueldo != null)
+                    @if (isset($salary) && $salary != null)
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>Empleado</strong> ya tiene registrada la pre nomina...
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

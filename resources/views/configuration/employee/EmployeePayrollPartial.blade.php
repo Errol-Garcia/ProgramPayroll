@@ -19,32 +19,15 @@
                     </div>
                 </form>
                 <div class="my-4">
-                    <?php
-                if(isset($_GET['mensaje']) and $_GET['mensaje']=='registrado'){
-            ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Registrado</strong> se agrego con exito...
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php
-                }
-            ?>
-
-                    {{-- <?php
-                if(isset($_GET['mensaje']) and $_GET['mensaje']=='Error'){
-            ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error</strong> vuelve a intentarlo..
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php
-                }
-            ?> --}}
+                    @if (isset($mensaje) && $mensaje == 'registrado')
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Registrado</strong> se agrego con exito...
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-9">
-                {{-- @isset($_POST['identification_card']) --}}
-                {{-- @if (/*isset($identification_card) &&*/ $identification_card != null) --}}
                 @if (isset($employee) && $employee != null)
                     @if (isset($salary) && $salary != null)
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

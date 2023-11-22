@@ -27,7 +27,7 @@
                                     </select>
                                 </div>
                                 <div class="col center">
-                                    <button class="btn btn-primary">Buscar</button>
+                                    <button class="btn btn-primary">Buscar </button>
                                 </div>
                             </form>
                         </div>

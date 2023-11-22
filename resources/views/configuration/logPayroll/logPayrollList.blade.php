@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                Historial Nomina
+                                Historial nomina
                             </div>
                             <div class="col">
                             </div>
@@ -26,7 +26,7 @@
                                         @endisset
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col center">
                                     <button class="btn btn-primary">Buscar</button>
                                 </div>
                             </form>

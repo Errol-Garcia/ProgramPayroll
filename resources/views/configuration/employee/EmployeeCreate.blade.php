@@ -1,4 +1,4 @@
-@extends('TemplateAdmin');
+@extends('TemplateAdmin')
 @section('content')
     <div class="container-fluid">
         <div class="row center py-3">

@@ -56,10 +56,10 @@ class EmployeeController extends Controller
     }
     public function edit(Employee $employee){
         $employee = Employee::find($employee->id);
-        $posts = post::get();
-        $departments = department::get();
+        $post = post::get();
+        $department = department::get();
         return view('configuration.employee.EmployeeUpdating',
-        ['employee'=> $employee, 'posts'=>$posts, 'departments'=>$departments]);
+        ['employee'=> $employee, 'post'=>$post, 'department'=>$department]);
     }
     public function update(Request $request, Employee $employee){
 
@@ -69,7 +69,7 @@ class EmployeeController extends Controller
             'last_names' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
             'salary' => 'required|required|custom_decimal',
             'number_phone' => 'required|regex:/^([0-9]*)$/',
-            'address' => 'required|regex:/^([A-Za-zÑñ\s]*)$/|between:3,100',
+            'address' => 'required|regex:/^([A-Za-zÑñ0-9\s\-,]*)$/|between:3,100',
             'email' => 'required|string|email|max:255|min:8',
             'department_id' => 'required|integer',
             'post_id' => 'required|integer'

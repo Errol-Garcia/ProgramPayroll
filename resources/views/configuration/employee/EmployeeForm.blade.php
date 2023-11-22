@@ -59,7 +59,7 @@
         </td>
         <td>
             <select class="form-select" name="post_id" aria-label="Default select example">
-                <option value="" selected>Seleccionar Cargo</option>
+                <option value="{{ $employee->post_id }}" selected>Seleccionar Cargo</option>
 
                 @isset($post)
                     @foreach ($post as $car)
